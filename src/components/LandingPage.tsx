@@ -73,16 +73,15 @@ export default function LandingPage() {
           className="text-4xl md:text-5xl font-semibold mb-4"
           data-aos="fade-up"
         >
-          Embrace the Stoic Mindset
+          Stoic
         </h1>
         <p
           className="text-lg md:text-xl text-[#666666] dark:text-[#A5A5A5] max-w-2xl mb-8"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Stoic is a modern app to help you live with intention, discipline, and
-          clarity. Reflect on timeless wisdom, journal your thoughts, and stay
-          grounded each day.
+          A calm space for daily reflection, private journalling, and Stoic
+          wisdom worth returning to.
         </p>
         <div data-aos="fade-up" data-aos-delay="400">
           <button
@@ -97,7 +96,7 @@ export default function LandingPage() {
               }
             }}
           >
-            Join the Waitlist
+            Join the waitlist
           </button>
         </div>
       </section>
@@ -126,13 +125,14 @@ export default function LandingPage() {
             Features
           </p>
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
-            Why Choose Stoic?
+            Why Stoic?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               {
-                title: 'Daily Reflections',
-                description: 'Receive thought-provoking Stoic quotes each day.',
+                title: 'Daily reflection',
+                description:
+                  'Begin each day with a short Stoic quote and reflection.',
                 icon: (
                   <ScrollText
                     size={40}
@@ -142,8 +142,9 @@ export default function LandingPage() {
                 ),
               },
               {
-                title: 'Save Your Favourites',
-                description: 'Bookmark quotes and revisit wisdom any time.',
+                title: 'Saved wisdom',
+                description:
+                  'Save the quotes that resonate and return to them when needed.',
                 icon: (
                   <Bookmark
                     size={40}
@@ -153,9 +154,9 @@ export default function LandingPage() {
                 ),
               },
               {
-                title: 'Private Journaling',
+                title: 'Private journalling',
                 description:
-                  'Write and reflect daily to gain perspective and track your Stoic journey.',
+                  'Write privately, reflect clearly, and build perspective over time.',
                 icon: (
                   <NotebookPen
                     size={40}
@@ -188,10 +189,10 @@ export default function LandingPage() {
       {/* Call To Action */}
       <section className="px-6 pt-16 pb-8 md:pb-10 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-          Ready to begin your Stoic journey?
+          Make reflection part of your day
         </h2>
         <p className="text-[#666666] dark:text-[#A5A5A5] mb-6">
-          Sign up to be notified when the Stoic App launches.
+          Join the waitlist for early access.
         </p>
 
         <form
@@ -215,11 +216,11 @@ export default function LandingPage() {
             className="px-4 py-2 rounded-lg bg-[#F9F9F9] dark:bg-[#2A2A2A] border border-[#DDDDDD] dark:border-[#444444] w-full max-w-sm focus:outline-none"
           />
           <button
-            aria-label="Notify Me"
+            aria-label="Notify me"
             type="submit"
             className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] active:shadow-inner transition-transform duration-200 ease-in-out focus:outline-none focus-visible:ring-0 cursor-pointer"
           >
-            {submitted ? '✔️ Submitted' : 'Notify Me'}
+            {submitted ? 'Submitted' : 'Notify me'}
           </button>
         </form>
 
@@ -231,17 +232,23 @@ export default function LandingPage() {
         >
           {showInputError && !submitted && (
             <p className="text-sm text-center text-[#70BFBF]" role="alert">
-              Please enter a valid email to join the waitlist.
+              Enter an email address to join the waitlist.
             </p>
           )}
           {error && (
-            <p className="text-sm text-center text-[#FF4C4C] dark:text-[#FF6B6B]" role="alert">
+            <p
+              className="text-sm text-center text-[#FF4C4C] dark:text-[#FF6B6B]"
+              role="alert"
+            >
               {error}
             </p>
           )}
           {submitted && !error && (
-            <p className="text-sm text-center text-[#4CAF6A] dark:text-[#B2E1C2] animate-fade-in-out" role="status">
-              You’ve been added to the waitlist!
+            <p
+              className="text-sm text-center text-[#4CAF6A] dark:text-[#B2E1C2] animate-fade-in-out"
+              role="status"
+            >
+              You're on the waitlist.
             </p>
           )}
         </div>
