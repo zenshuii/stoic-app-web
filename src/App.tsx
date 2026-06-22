@@ -35,9 +35,10 @@ function App() {
 
   useEffect(() => {
     AOS.init({
-      duration: 600,
+      duration: 750,
       once: true,
-      easing: 'ease-in-out',
+      easing: 'ease-out-cubic',
+      offset: 80,
     })
   }, [])
 

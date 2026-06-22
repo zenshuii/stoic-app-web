@@ -49,24 +49,19 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-[#333333] dark:bg-[#1C1C1C] dark:text-[#F5F5F5] font-[Poppins] transition-colors">
+    <main className="min-h-screen bg-[#FFFEFC] text-[#333333] dark:bg-[#1C1C1C] dark:text-[#F5F5F5] font-[Poppins] transition-colors duration-300">
       {/* Hero Section */}
-      <section
-        className="flex flex-col items-center justify-center text-center px-6 py-32"
-        data-aos="fade-up"
-      >
+      <section className="flex flex-col items-center justify-center text-center px-6 py-32">
         <div>
           <img
             src={logoDark}
             alt="Stoic App logo dark"
             className="block dark:hidden h-20 md:h-28 lg:h-32 mb-6"
-            data-aos="zoom-in"
           />
           <img
             src={logoLight}
             alt="Stoic App logo light"
             className="hidden dark:block h-20 md:h-28 lg:h-32 mb-6"
-            data-aos="zoom-in"
           />
         </div>
         <h1
@@ -78,15 +73,15 @@ export default function LandingPage() {
         <p
           className="text-lg md:text-xl text-[#666666] dark:text-[#A5A5A5] max-w-2xl mb-8"
           data-aos="fade-up"
-          data-aos-delay="200"
+          data-aos-delay="150"
         >
           A calm space for daily reflection, private journalling, and Stoic
           wisdom worth returning to.
         </p>
-        <div data-aos="fade-up" data-aos-delay="400">
+        <div data-aos="fade-up" data-aos-delay="300">
           <button
             aria-label="Join the Waitlist"
-            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] active:shadow-inner transition-transform duration-200 ease-in-out focus:outline-none focus-visible:ring-0 cursor-pointer"
+            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
             onClick={() => {
               if (formRef.current) {
                 const targetY =
@@ -102,14 +97,14 @@ export default function LandingPage() {
       </section>
 
       {/* Quote Preview Section */}
-      <section className="bg-[#FAF3D4] dark:bg-[#FFDFA5] px-6 py-16">
+      <section className="bg-[#F7EFD8] dark:bg-[#EFD6A3] px-6 py-16 transition-colors duration-300">
         <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
           <blockquote className="italic text-xl md:text-2xl text-[#333333] dark:text-[#1C1C1C]">
             "You have power over your mind – not outside events. Realise this,
             and you will find strength."
           </blockquote>
           <cite
-            className="block mt-4 text-[#666666] dark:text-[#2B2B2B]"
+            className="block mt-4 text-[#666666] dark:text-[#3A3327]"
             data-aos="fade-up"
             data-aos-delay="200"
           >
@@ -119,7 +114,7 @@ export default function LandingPage() {
       </section>
 
       {/* Feature Highlights */}
-      <section className="px-6 py-24 bg-[#F5F5F5] dark:bg-[#2B2B2B]">
+      <section className="px-6 py-24 bg-[#F7F7F4] dark:bg-[#2B2B2B] transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <p className="text-sm uppercase tracking-wide text-[#A5A5A5] text-center mb-2">
             Features
@@ -168,12 +163,12 @@ export default function LandingPage() {
             ].map(({ title, description, icon }, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-center p-6 bg-white dark:bg-[#1C1C1C] rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="flex transform-gpu flex-col items-center rounded-lg bg-white p-6 text-center shadow-lg transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:md:hover:-translate-y-1.5 motion-safe:md:hover:shadow-[0_22px_55px_rgba(0,0,0,0.13)] motion-reduce:transition-none dark:bg-[#1C1C1C] dark:motion-safe:md:hover:shadow-[0_22px_55px_rgba(0,0,0,0.4)]"
                 data-aos="fade-up"
-                data-aos-delay={index * 200}
+                data-aos-delay={index * 120}
                 data-aos-offset="120"
               >
-                <div className="mb-4 transform transition-transform duration-300 hover:scale-110">
+                <div className="mb-4">
                   {icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{title}</h3>
@@ -213,12 +208,12 @@ export default function LandingPage() {
                 ? 'email-messages'
                 : undefined
             }
-            className="px-4 py-2 rounded-lg bg-[#F9F9F9] dark:bg-[#2A2A2A] border border-[#DDDDDD] dark:border-[#444444] w-full max-w-sm focus:outline-none"
+            className="px-4 py-2 rounded-lg bg-[#FAFAF8] dark:bg-[#2A2A2A] border border-[#DADAD4] dark:border-[#444444] w-full max-w-sm focus:outline-none focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/25 transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           />
           <button
             aria-label="Notify me"
             type="submit"
-            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] active:shadow-inner transition-transform duration-200 ease-in-out focus:outline-none focus-visible:ring-0 cursor-pointer"
+            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
           >
             {submitted ? 'Submitted' : 'Notify me'}
           </button>
@@ -245,7 +240,7 @@ export default function LandingPage() {
           )}
           {submitted && !error && (
             <p
-              className="text-sm text-center text-[#4CAF6A] dark:text-[#B2E1C2] animate-fade-in-out"
+              className="text-sm text-center text-[#4CAF6A] dark:text-[#B2E1C2]"
               role="status"
             >
               You're on the waitlist.
@@ -262,7 +257,7 @@ export default function LandingPage() {
             href="https://zenshuii.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-inherit underline underline-offset-4 hover:text-[#70BFBF] transition-colors"
+            className="text-inherit underline underline-offset-4 transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#70BFBF]"
             aria-label="Zenshuii website"
           >
             Zenshuii
@@ -273,19 +268,19 @@ export default function LandingPage() {
             href="https://www.instagram.com/zenshuii/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform duration-200 hover:scale-110"
+            className="group"
             aria-label="Zenshuii on Instagram"
           >
-            <FaInstagram className="w-5 h-5 text-[#A5A5A5] dark:text-[#666666] hover:text-[#70BFBF] transition-colors" />
+            <FaInstagram className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]" />
           </a>
           <a
             href="https://www.youtube.com/@zenshuiistudios"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform duration-200 hover:scale-110"
+            className="group"
             aria-label="Zenshuii on YouTube"
           >
-            <FaYoutube className="w-5 h-5 text-[#A5A5A5] dark:text-[#666666] hover:text-[#70BFBF] transition-colors" />
+            <FaYoutube className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]" />
           </a>
         </div>
       </footer>
