@@ -10,22 +10,58 @@ import { smoothScrollTo } from '../utils/smoothScrollTo'
 export default function LandingPage() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
-  const [showInputError, setShowInputError] = useState(false)
+  const [inputError, setInputError] = useState('')
 
   const formRef = useRef<HTMLFormElement | null>(null)
+  const emailInputRef = useRef<HTMLInputElement | null>(null)
+
+  const hasEmailMessage = !!inputError || !!error || (submitted && !error)
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value)
+    setInputError('')
+    setError('')
+    if (submitted) setSubmitted(false)
+  }
+
+  const handleHeroCtaClick = () => {
+    if (!formRef.current) return
+
+    const targetY = formRef.current.getBoundingClientRect().top + window.scrollY
+    smoothScrollTo(targetY, 1500)
+
+    window.setTimeout(
+      () => emailInputRef.current?.focus({ preventScroll: true }),
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900
+    )
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (isSubmitting) return
+
+    const trimmedEmail = email.trim()
+
     setError('')
-    if (!email.trim()) {
-      setShowInputError(true)
+    setInputError('')
+    setSubmitted(false)
+
+    if (!trimmedEmail) {
+      setInputError('Enter an email address to join the waitlist.')
       return
-    } else {
-      setShowInputError(false)
     }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+      setInputError('Enter a valid email address.')
+      return
+    }
+
+    setIsSubmitting(true)
+
     try {
-      const lowerEmail = email.toLowerCase()
+      const lowerEmail = trimmedEmail.toLowerCase()
       await setDoc(doc(db, 'waitlistSignups', lowerEmail), {
         email: lowerEmail,
         createdAt: serverTimestamp(),
@@ -34,17 +70,19 @@ export default function LandingPage() {
       setSubmitted(true)
       setEmail('')
     } catch (err: unknown) {
-      if (
-        typeof err === 'object' &&
-        err !== null &&
-        'code' in err &&
-        (err as { code?: string }).code === 'permission-denied'
-      ) {
-        setError('This email is already registered.')
+      const errorCode =
+        typeof err === 'object' && err !== null && 'code' in err
+          ? (err as { code?: string }).code
+          : undefined
+
+      if (errorCode === 'permission-denied') {
+        setError('This email may already be on the waitlist.')
       } else {
         setError('Something went wrong. Please try again.')
       }
       console.error(err)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -82,14 +120,7 @@ export default function LandingPage() {
           <button
             aria-label="Join the Waitlist"
             className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
-            onClick={() => {
-              if (formRef.current) {
-                const targetY =
-                  formRef.current.getBoundingClientRect().top + window.scrollY
-                smoothScrollTo(targetY, 1500)
-                setShowInputError(!email.trim())
-              }
-            }}
+            onClick={handleHeroCtaClick}
           >
             Join the waitlist
           </button>
@@ -168,9 +199,7 @@ export default function LandingPage() {
                 data-aos-delay={index * 120}
                 data-aos-offset="120"
               >
-                <div className="mb-4">
-                  {icon}
-                </div>
+                <div className="mb-4">{icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{title}</h3>
                 <p className="text-[#666666] dark:text-[#A5A5A5]">
                   {description}
@@ -194,28 +223,33 @@ export default function LandingPage() {
           ref={formRef}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
           onSubmit={handleSubmit}
+          noValidate
+          aria-busy={isSubmitting}
         >
           <input
+            ref={emailInputRef}
             aria-label="Email address"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             placeholder="you@example.com"
             required
-            aria-invalid={showInputError || !!error ? true : undefined}
-            aria-describedby={
-              showInputError || !!error || (submitted && !error)
-                ? 'email-messages'
-                : undefined
-            }
-            className="px-4 py-2 rounded-lg bg-[#FAFAF8] dark:bg-[#2A2A2A] border border-[#DADAD4] dark:border-[#444444] w-full max-w-sm focus:outline-none focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/25 transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+            disabled={isSubmitting}
+            aria-invalid={inputError || !!error ? true : undefined}
+            aria-describedby={hasEmailMessage ? 'email-messages' : undefined}
+            className="px-4 py-2 rounded-lg bg-[#FAFAF8] dark:bg-[#2A2A2A] border border-[#DADAD4] dark:border-[#444444] w-full max-w-sm focus:outline-none focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/25 disabled:cursor-not-allowed disabled:opacity-70 transition-[border-color,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           />
           <button
-            aria-label="Notify me"
+            aria-label={isSubmitting ? 'Joining waitlist' : 'Notify me'}
             type="submit"
-            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
+            disabled={isSubmitting || submitted}
+            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow,opacity] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-[#70BFBF] disabled:hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
           >
-            {submitted ? 'Submitted' : 'Notify me'}
+            {isSubmitting
+              ? 'Joining...'
+              : submitted
+                ? 'Submitted'
+                : 'Notify me'}
           </button>
         </form>
 
@@ -225,9 +259,9 @@ export default function LandingPage() {
           aria-live="polite"
           aria-atomic="true"
         >
-          {showInputError && !submitted && (
+          {inputError && !submitted && (
             <p className="text-sm text-center text-[#70BFBF]" role="alert">
-              Enter an email address to join the waitlist.
+              {inputError}
             </p>
           )}
           {error && (
