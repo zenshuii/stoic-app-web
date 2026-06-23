@@ -3,8 +3,6 @@ import logoLight from '../assets/logo/stoic-app-logo-transparent-white.png'
 import logoDark from '../assets/logo/stoic-app-logo-transparent.png'
 import { ScrollText, Bookmark, NotebookPen } from 'lucide-react'
 import { useRef, useState } from 'react'
-import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
-import { db } from '../lib/firebase'
 import { smoothScrollTo } from '../utils/smoothScrollTo'
 
 export default function LandingPage() {
@@ -61,12 +59,8 @@ export default function LandingPage() {
     setIsSubmitting(true)
 
     try {
-      const lowerEmail = trimmedEmail.toLowerCase()
-      await setDoc(doc(db, 'waitlistSignups', lowerEmail), {
-        email: lowerEmail,
-        createdAt: serverTimestamp(),
-        source: 'landing-page',
-      })
+      const { submitWaitlistEmail } = await import('../lib/waitlist')
+      await submitWaitlistEmail(trimmedEmail)
       setSubmitted(true)
       setEmail('')
     } catch (err: unknown) {
