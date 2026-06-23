@@ -87,12 +87,14 @@ export default function LandingPage() {
         <div>
           <img
             src={logoDark}
-            alt="Stoic App logo dark"
+            alt=""
+            aria-hidden="true"
             className="block dark:hidden h-20 md:h-28 lg:h-32 mb-6"
           />
           <img
             src={logoLight}
-            alt="Stoic App logo light"
+            alt=""
+            aria-hidden="true"
             className="hidden dark:block h-20 md:h-28 lg:h-32 mb-6"
           />
         </div>
@@ -112,7 +114,6 @@ export default function LandingPage() {
         </p>
         <div data-aos="fade-up" data-aos-delay="300">
           <button
-            aria-label="Join the Waitlist"
             className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
             onClick={handleHeroCtaClick}
           >
@@ -155,6 +156,7 @@ export default function LandingPage() {
                   'Begin each day with a short Stoic quote and reflection.',
                 icon: (
                   <ScrollText
+                    aria-hidden="true"
                     size={40}
                     strokeWidth={1.5}
                     className="text-[#70BFBF] md:w-12 md:h-12 w-10 h-10"
@@ -167,6 +169,7 @@ export default function LandingPage() {
                   'Save the quotes that resonate and return to them when needed.',
                 icon: (
                   <Bookmark
+                    aria-hidden="true"
                     size={40}
                     strokeWidth={1.5}
                     className="text-[#70BFBF] md:w-12 md:h-12 w-10 h-10"
@@ -179,6 +182,7 @@ export default function LandingPage() {
                   'Write privately, reflect clearly, and build perspective over time.',
                 icon: (
                   <NotebookPen
+                    aria-hidden="true"
                     size={40}
                     strokeWidth={1.5}
                     className="text-[#70BFBF] md:w-12 md:h-12 w-10 h-10"
@@ -224,17 +228,22 @@ export default function LandingPage() {
             ref={emailInputRef}
             aria-label="Email address"
             type="email"
+            name="email"
             value={email}
             onChange={handleEmailChange}
             placeholder="you@example.com"
+            autoComplete="email"
+            autoCapitalize="none"
+            inputMode="email"
+            enterKeyHint="send"
+            spellCheck={false}
             required
             disabled={isSubmitting}
-            aria-invalid={inputError || !!error ? true : undefined}
+            aria-invalid={inputError ? true : undefined}
             aria-describedby={hasEmailMessage ? 'email-messages' : undefined}
             className="px-4 py-2 rounded-lg bg-[#FAFAF8] dark:bg-[#2A2A2A] border border-[#DADAD4] dark:border-[#444444] w-full max-w-sm focus:outline-none focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/25 disabled:cursor-not-allowed disabled:opacity-70 transition-[border-color,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           />
           <button
-            aria-label={isSubmitting ? 'Joining waitlist' : 'Notify me'}
             type="submit"
             disabled={isSubmitting || submitted}
             className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow,opacity] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-[#70BFBF] disabled:hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
@@ -299,7 +308,11 @@ export default function LandingPage() {
             className="group"
             aria-label="Zenshuii on Instagram"
           >
-            <FaInstagram className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]" />
+            <FaInstagram
+              aria-hidden="true"
+              focusable="false"
+              className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]"
+            />
           </a>
           <a
             href="https://www.youtube.com/@zenshuiistudios"
@@ -308,7 +321,11 @@ export default function LandingPage() {
             className="group"
             aria-label="Zenshuii on YouTube"
           >
-            <FaYoutube className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]" />
+            <FaYoutube
+              aria-hidden="true"
+              focusable="false"
+              className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]"
+            />
           </a>
         </div>
       </footer>

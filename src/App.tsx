@@ -34,7 +34,12 @@ function App() {
   }, [])
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    )
+
     AOS.init({
+      disable: prefersReducedMotion.matches,
       duration: 750,
       once: true,
       easing: 'ease-out-cubic',
