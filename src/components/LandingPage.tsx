@@ -114,7 +114,7 @@ export default function LandingPage() {
         </p>
         <div data-aos="fade-up" data-aos-delay="300">
           <button
-            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
+            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_0_0_3px_rgba(112,191,191,0.12),0_10px_24px_rgba(112,191,191,0.24)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
             onClick={handleHeroCtaClick}
           >
             Join the waitlist
@@ -246,7 +246,7 @@ export default function LandingPage() {
           <button
             type="submit"
             disabled={isSubmitting || submitted}
-            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow,opacity] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_8px_20px_rgba(112,191,191,0.28)] active:bg-[#4F9F9F] active:shadow-sm disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-[#70BFBF] disabled:hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
+            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow,opacity] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_0_0_3px_rgba(112,191,191,0.12),0_10px_24px_rgba(112,191,191,0.24)] active:bg-[#4F9F9F] active:shadow-sm disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-[#70BFBF] disabled:hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
           >
             {isSubmitting
               ? 'Joining...'
