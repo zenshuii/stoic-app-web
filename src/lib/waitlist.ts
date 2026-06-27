@@ -6,6 +6,11 @@ const getWaitlistDocumentId = (email: string) =>
 
 export const submitWaitlistEmail = async (email: string) => {
   const lowerEmail = email.trim().toLowerCase()
+
+  if (!lowerEmail) {
+    throw new Error('Email address is required.')
+  }
+
   const documentId = getWaitlistDocumentId(lowerEmail)
 
   await setDoc(doc(db, 'waitlistSignups', documentId), {
