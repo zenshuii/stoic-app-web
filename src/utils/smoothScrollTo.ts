@@ -18,7 +18,7 @@ export const smoothScrollTo = (targetY: number, baseDuration = 1000) => {
     t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 
   const step = (timestamp: number) => {
-    if (!start) start = timestamp
+    if (start === null) start = timestamp
     const elapsed = timestamp - start
     const progress = Math.min(elapsed / duration, 1)
     const ease = easeInOutCubic(progress)
