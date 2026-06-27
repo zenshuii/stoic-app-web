@@ -15,7 +15,8 @@ export default function LandingPage() {
   const formRef = useRef<HTMLFormElement | null>(null)
   const emailInputRef = useRef<HTMLInputElement | null>(null)
 
-  const hasEmailMessage = !!inputError || !!error || (submitted && !error)
+  const hasEmailError = !!inputError || !!error
+  const hasEmailMessage = hasEmailError || (submitted && !error)
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -239,7 +240,7 @@ export default function LandingPage() {
             spellCheck={false}
             required
             disabled={isSubmitting}
-            aria-invalid={inputError ? true : undefined}
+            aria-invalid={hasEmailError ? true : undefined}
             aria-describedby={hasEmailMessage ? 'email-messages' : undefined}
             className="px-4 py-2 rounded-lg bg-[#FAFAF8] dark:bg-[#2A2A2A] border border-[#DADAD4] dark:border-[#444444] w-full max-w-sm focus:outline-none focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/25 disabled:cursor-not-allowed disabled:opacity-70 transition-[border-color,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           />
