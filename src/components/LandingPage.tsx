@@ -110,7 +110,7 @@ export default function LandingPage() {
           data-aos="fade-up"
           data-aos-delay="150"
         >
-          A calm space for daily reflection, private journalling, and Stoic
+          A calm space for daily reflection, personal journalling, and Stoic
           wisdom worth returning to.
         </p>
         <div data-aos="fade-up" data-aos-delay="300">
@@ -178,9 +178,9 @@ export default function LandingPage() {
                 ),
               },
               {
-                title: 'Private journalling',
+                title: 'Personal journalling',
                 description:
-                  'Write privately, reflect clearly, and build perspective over time.',
+                  'Write freely, reflect clearly, and build perspective over time.',
                 icon: (
                   <NotebookPen
                     aria-hidden="true"
@@ -289,6 +289,20 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="px-6 pt-6 pb-10 md:pt-8 md:pb-12 text-center text-sm text-[#A5A5A5] dark:text-[#666666] border-t border-black/10 dark:border-white/10">
+        <div className="mb-4 flex justify-center gap-5 text-xs">
+          <a
+            href="/privacy"
+            className="underline underline-offset-4 transition-colors duration-300 hover:text-[#70BFBF]"
+          >
+            Privacy
+          </a>
+          <a
+            href="/terms"
+            className="underline underline-offset-4 transition-colors duration-300 hover:text-[#70BFBF]"
+          >
+            Terms
+          </a>
+        </div>
         <p className="mb-4">
           © {new Date().getFullYear()} Stoic App by{' '}
           <a

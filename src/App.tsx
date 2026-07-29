@@ -1,10 +1,11 @@
 import './App.css'
 import LandingPage from './components/LandingPage'
+import LegalPage from './components/LegalPage'
 import 'aos/dist/aos.css'
 import AOS from 'aos'
 import { useEffect, useLayoutEffect } from 'react'
 
-function App() {
+function LandingApp() {
   useLayoutEffect(() => {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual'
@@ -54,6 +55,20 @@ function App() {
       </div>
     </>
   )
+}
+
+function App() {
+  const path = window.location.pathname.replace(/\/$/, '')
+
+  if (path === '/privacy') {
+    return <LegalPage kind="privacy" />
+  }
+
+  if (path === '/terms') {
+    return <LegalPage kind="terms" />
+  }
+
+  return <LandingApp />
 }
 
 export default App

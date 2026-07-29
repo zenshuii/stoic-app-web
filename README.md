@@ -39,4 +39,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or collaboration, contact [Simone Melidoni](mailto:simone.melidoni@outlook.com)
+For questions or collaboration, contact [Stoic support](mailto:support@stoic-app.com)
