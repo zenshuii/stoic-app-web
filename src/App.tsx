@@ -68,6 +68,10 @@ function App() {
     return <LegalPage kind="terms" />
   }
 
+  if (path === '/delete-account') {
+    return <LegalPage kind="delete-account" />
+  }
+
   return <LandingApp />
 }
 

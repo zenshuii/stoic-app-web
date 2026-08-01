@@ -302,6 +302,12 @@ export default function LandingPage() {
           >
             Terms
           </a>
+          <a
+            href="/delete-account"
+            className="underline underline-offset-4 transition-colors duration-300 hover:text-[#70BFBF]"
+          >
+            Delete account
+          </a>
         </div>
         <p className="mb-4">
           © {new Date().getFullYear()} Stoic App by{' '}
