@@ -1,9 +1,35 @@
 import { FaInstagram, FaYoutube } from 'react-icons/fa'
-import logoLight from '../assets/logo/stoic-app-logo-transparent-white.png'
-import logoDark from '../assets/logo/stoic-app-logo-transparent.png'
-import { ScrollText, Bookmark, NotebookPen } from 'lucide-react'
+import { ArrowRight, BookOpen, Bookmark, Check, Sparkles } from 'lucide-react'
 import { useRef, useState } from 'react'
+
+import logoLight from '../assets/logo/stoic-app-logo-transparent-white.png'
 import { smoothScrollTo } from '../utils/smoothScrollTo'
+
+import { StoicAppPreview } from './StoicAppPreview'
+
+const features = [
+  {
+    number: '01',
+    title: 'Begin with perspective',
+    description:
+      'A considered Stoic thought gives each day a calmer starting point.',
+    icon: Sparkles,
+  },
+  {
+    number: '02',
+    title: 'Write for yourself',
+    description:
+      'A space to reflect, capture what matters, and make sense of the days as they unfold.',
+    icon: BookOpen,
+  },
+  {
+    number: '03',
+    title: 'Keep what matters',
+    description:
+      'Return to the quotes and reflections that continue to meet you where you are.',
+    icon: Bookmark,
+  },
+]
 
 export default function LandingPage() {
   const [email, setEmail] = useState('')
@@ -18,8 +44,8 @@ export default function LandingPage() {
   const hasEmailError = !!inputError || !!error
   const hasEmailMessage = hasEmailError || (submitted && !error)
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value)
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
     setInputError('')
     setError('')
     if (submitted) setSubmitted(false)
@@ -29,20 +55,16 @@ export default function LandingPage() {
     if (!formRef.current) return
 
     const targetY = formRef.current.getBoundingClientRect().top + window.scrollY
-    smoothScrollTo(targetY, 1500)
-
-    window.setTimeout(
-      () => emailInputRef.current?.focus({ preventScroll: true }),
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900
+    void smoothScrollTo(targetY - 96).then(() =>
+      emailInputRef.current?.focus({ preventScroll: true })
     )
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
     if (isSubmitting) return
 
     const trimmedEmail = email.trim()
-
     setError('')
     setInputError('')
     setSubmitted(false)
@@ -64,270 +86,304 @@ export default function LandingPage() {
       await submitWaitlistEmail(trimmedEmail)
       setSubmitted(true)
       setEmail('')
-    } catch (err: unknown) {
+    } catch (submitError: unknown) {
       const errorCode =
-        typeof err === 'object' && err !== null && 'code' in err
-          ? (err as { code?: string }).code
+        typeof submitError === 'object' &&
+        submitError !== null &&
+        'code' in submitError
+          ? (submitError as { code?: string }).code
           : undefined
 
       if (errorCode === 'permission-denied') {
-        setError('This email may already be on the waitlist.')
+        setError(
+          'Sign-ups are temporarily unavailable. Please try again later.'
+        )
       } else {
         setError('Something went wrong. Please try again.')
       }
-      console.error(err)
+      console.error(submitError)
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <main className="min-h-screen bg-[#FFFEFC] text-[#333333] dark:bg-[#1C1C1C] dark:text-[#F5F5F5] font-[Poppins] transition-colors duration-300">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center px-6 py-32">
-        <div>
-          <img
-            src={logoDark}
-            alt=""
-            aria-hidden="true"
-            className="block dark:hidden h-20 md:h-28 lg:h-32 mb-6"
-          />
-          <img
-            src={logoLight}
-            alt=""
-            aria-hidden="true"
-            className="hidden dark:block h-20 md:h-28 lg:h-32 mb-6"
-          />
+    <main className="overflow-hidden bg-[#1C1C1C] text-[#F5F5F5]">
+      <section className="relative isolate border-b border-white/10">
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute left-1/2 top-[-20rem] h-[44rem] w-[44rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[110px]" />
+          <div className="absolute bottom-[-24rem] right-[-10rem] h-[34rem] w-[34rem] rounded-full bg-[#2E8282]/15 blur-[100px]" />
         </div>
-        <h1
-          className="text-4xl md:text-5xl font-semibold mb-4"
-          data-aos="fade-up"
-        >
-          Stoic
-        </h1>
-        <p
-          className="text-lg md:text-xl text-[#666666] dark:text-[#A5A5A5] max-w-2xl mb-8"
-          data-aos="fade-up"
-          data-aos-delay="150"
-        >
-          A calm space for daily reflection, private journalling, and Stoic
-          wisdom worth returning to.
-        </p>
-        <div data-aos="fade-up" data-aos-delay="300">
+
+        <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
+          <div className="flex items-center gap-3">
+            <img
+              src={logoLight}
+              alt=""
+              aria-hidden="true"
+              className="h-9 w-9"
+            />
+            <span className="text-xl font-semibold tracking-[-0.03em]">
+              Stoic
+            </span>
+          </div>
           <button
-            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_0_0_3px_rgba(112,191,191,0.12),0_10px_24px_rgba(112,191,191,0.24)] active:bg-[#4F9F9F] active:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
+            type="button"
             onClick={handleHeroCtaClick}
+            className="rounded-full border border-[#70BFBF]/45 bg-[#70BFBF]/10 px-4 py-2 text-sm font-medium text-[#F5F5F5] transition hover:border-[#70BFBF] hover:bg-[#70BFBF] hover:text-[#1C1C1C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
           >
             Join the waitlist
           </button>
-        </div>
-      </section>
+        </header>
 
-      {/* Quote Preview Section */}
-      <section className="bg-[#F7EFD8] dark:bg-[#EFD6A3] px-6 py-16 transition-colors duration-300">
-        <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
-          <blockquote className="italic text-xl md:text-2xl text-[#333333] dark:text-[#1C1C1C]">
-            "You have power over your mind – not outside events. Realise this,
-            and you will find strength."
-          </blockquote>
-          <cite
-            className="block mt-4 text-[#666666] dark:text-[#3A3327]"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            – Marcus Aurelius
-          </cite>
-        </div>
-      </section>
-
-      {/* Feature Highlights */}
-      <section className="px-6 py-24 bg-[#F7F7F4] dark:bg-[#2B2B2B] transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-sm uppercase tracking-wide text-[#A5A5A5] text-center mb-2">
-            Features
-          </p>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
-            Why Stoic?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              {
-                title: 'Daily reflection',
-                description:
-                  'Begin each day with a short Stoic quote and reflection.',
-                icon: (
-                  <ScrollText
-                    aria-hidden="true"
-                    size={40}
-                    strokeWidth={1.5}
-                    className="text-[#70BFBF] md:w-12 md:h-12 w-10 h-10"
-                  />
-                ),
-              },
-              {
-                title: 'Saved wisdom',
-                description:
-                  'Save the quotes that resonate and return to them when needed.',
-                icon: (
-                  <Bookmark
-                    aria-hidden="true"
-                    size={40}
-                    strokeWidth={1.5}
-                    className="text-[#70BFBF] md:w-12 md:h-12 w-10 h-10"
-                  />
-                ),
-              },
-              {
-                title: 'Private journalling',
-                description:
-                  'Write privately, reflect clearly, and build perspective over time.',
-                icon: (
-                  <NotebookPen
-                    aria-hidden="true"
-                    size={40}
-                    strokeWidth={1.5}
-                    className="text-[#70BFBF] md:w-12 md:h-12 w-10 h-10"
-                  />
-                ),
-              },
-            ].map(({ title, description, icon }, index) => (
-              <div
-                key={index}
-                className="flex transform-gpu flex-col items-center rounded-lg bg-white p-6 text-center shadow-lg transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:md:hover:-translate-y-1.5 motion-safe:md:hover:shadow-[0_22px_55px_rgba(0,0,0,0.13)] motion-reduce:transition-none dark:bg-[#1C1C1C] dark:motion-safe:md:hover:shadow-[0_22px_55px_rgba(0,0,0,0.4)]"
-                data-aos="fade-up"
-                data-aos-delay={index * 120}
-                data-aos-offset="120"
+        <div
+          id="top"
+          className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-16 lg:grid-cols-[1.03fr_0.97fr] lg:px-8 lg:pb-28 lg:pt-24"
+        >
+          <div className="max-w-2xl" data-aos="fade-up">
+            <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
+              Daily reflection
+            </p>
+            <h1 className="max-w-xl text-5xl font-semibold leading-[1.04] tracking-[-0.055em] text-[#F5F5F5] sm:text-6xl lg:text-7xl">
+              Make room for a clearer mind.
+            </h1>
+            <p className="mt-7 max-w-lg text-lg leading-8 text-[#A5A5A5] sm:text-xl">
+              Stoic brings daily perspective, personal journalling, and the
+              wisdom worth returning to into one quieter practice.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <button
+                type="button"
+                onClick={handleHeroCtaClick}
+                className="group inline-flex items-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 text-base font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
               >
-                <div className="mb-4">{icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{title}</h3>
-                <p className="text-[#666666] dark:text-[#A5A5A5]">
-                  {description}
-                </p>
-              </div>
-            ))}
+                Join the waitlist
+                <ArrowRight
+                  aria-hidden="true"
+                  size={18}
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
+              </button>
+              <p className="text-sm text-[#A5A5A5]">
+                A calmer, more intentional daily habit.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative" data-aos="fade-up" data-aos-delay="120">
+            <StoicAppPreview />
           </div>
         </div>
       </section>
 
-      {/* Call To Action */}
-      <section className="px-6 pt-16 pb-8 md:pb-10 text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-          Make reflection part of your day
-        </h2>
-        <p className="text-[#666666] dark:text-[#A5A5A5] mb-6">
-          Join the waitlist for early access.
-        </p>
-
-        <form
-          ref={formRef}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          onSubmit={handleSubmit}
-          noValidate
-          aria-busy={isSubmitting}
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
+        <div data-aos="fade-up">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
+            A daily pause
+          </p>
+          <h2 className="mt-5 max-w-sm text-3xl font-semibold leading-tight tracking-[-0.04em] sm:text-4xl">
+            Less noise. More perspective.
+          </h2>
+        </div>
+        <blockquote
+          className="border-l border-[#70BFBF] pl-7 sm:pl-10"
+          data-aos="fade-up"
+          data-aos-delay="100"
         >
-          <input
-            ref={emailInputRef}
-            aria-label="Email address"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmailChange}
-            placeholder="you@example.com"
-            autoComplete="email"
-            autoCapitalize="none"
-            inputMode="email"
-            enterKeyHint="send"
-            spellCheck={false}
-            required
-            disabled={isSubmitting}
-            aria-invalid={hasEmailError ? true : undefined}
-            aria-describedby={hasEmailMessage ? 'email-messages' : undefined}
-            className="px-4 py-2 rounded-lg bg-[#FAFAF8] dark:bg-[#2A2A2A] border border-[#DADAD4] dark:border-[#444444] w-full max-w-sm focus:outline-none focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/25 disabled:cursor-not-allowed disabled:opacity-70 transition-[border-color,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting || submitted}
-            className="px-5 py-2.5 bg-[#70BFBF] text-white text-base font-medium rounded-lg shadow-sm transition-[background-color,box-shadow,opacity] duration-300 ease-out hover:bg-[#58AFAF] hover:shadow-[0_0_0_3px_rgba(112,191,191,0.12),0_10px_24px_rgba(112,191,191,0.24)] active:bg-[#4F9F9F] active:shadow-sm disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-[#70BFBF] disabled:hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFEFC] motion-reduce:transition-none dark:focus-visible:ring-offset-[#1C1C1C] cursor-pointer"
-          >
-            {isSubmitting
-              ? 'Joining...'
-              : submitted
-                ? 'Submitted'
-                : 'Notify me'}
-          </button>
-        </form>
+          <p className="max-w-3xl text-2xl font-medium leading-[1.35] tracking-[-0.03em] text-[#F5F5F5] sm:text-3xl lg:text-4xl">
+            “You have power over your mind – not outside events. Realise this,
+            and you will find strength.”
+          </p>
+          <cite className="mt-6 block text-sm not-italic text-[#A5A5A5]">
+            Marcus Aurelius
+          </cite>
+        </blockquote>
+      </section>
 
-        <div
-          id="email-messages"
-          className="min-h-[1.25rem] mt-2"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {inputError && !submitted && (
-            <p className="text-sm text-center text-[#70BFBF]" role="alert">
-              {inputError}
-            </p>
-          )}
-          {error && (
+      <section className="border-y border-white/10 bg-[#2B2B2B]">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div data-aos="fade-up">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
+                The practice
+              </p>
+              <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                A home for what helps.
+              </h2>
+            </div>
             <p
-              className="text-sm text-center text-[#FF4C4C] dark:text-[#FF6B6B]"
-              role="alert"
+              className="max-w-md text-base leading-7 text-[#A5A5A5]"
+              data-aos="fade-up"
+              data-aos-delay="80"
             >
-              {error}
+              Small rituals become more meaningful when they are easy to return
+              to.
             </p>
-          )}
-          {submitted && !error && (
-            <p
-              className="text-sm text-center text-[#4CAF6A] dark:text-[#B2E1C2]"
-              role="status"
-            >
-              You're on the waitlist.
-            </p>
-          )}
+          </div>
+
+          <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:grid-cols-3">
+            {features.map(
+              ({ number, title, description, icon: Icon }, index) => (
+                <article
+                  key={number}
+                  className="group bg-[#2B2B2B] p-7 transition-colors hover:bg-[#363636] sm:p-9"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="flex items-start justify-between">
+                    <span className="text-sm font-medium text-[#70BFBF]">
+                      {number}
+                    </span>
+                    <Icon
+                      aria-hidden="true"
+                      size={22}
+                      strokeWidth={1.5}
+                      className="text-[#A5A5A5] transition-colors group-hover:text-[#70BFBF]"
+                    />
+                  </div>
+                  <h3 className="mt-16 text-xl font-semibold tracking-[-0.025em] text-[#F5F5F5]">
+                    {title}
+                  </h3>
+                  <p className="mt-4 max-w-xs leading-7 text-[#A5A5A5]">
+                    {description}
+                  </p>
+                </article>
+              )
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="px-6 pt-6 pb-10 md:pt-8 md:pb-12 text-center text-sm text-[#A5A5A5] dark:text-[#666666] border-t border-black/10 dark:border-white/10">
-        <p className="mb-4">
-          © {new Date().getFullYear()} Stoic App by{' '}
-          <a
-            href="https://zenshuii.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-inherit underline underline-offset-4 transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#70BFBF]"
-            aria-label="Zenshuii website"
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+        <div
+          className="rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-[0_20px_45px_rgba(0,0,0,0.22)] sm:px-12 lg:px-20 lg:py-16"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse at 50% 100%, rgba(112, 191, 191, 0.1), transparent 62%)',
+          }}
+        >
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
+            Early access
+          </p>
+          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-tight tracking-[-0.045em] text-[#F5F5F5] sm:text-5xl">
+            Make reflection part of your day.
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-[#A5A5A5]">
+            Join the waitlist and be first to know when Stoic is ready.
+          </p>
+
+          <form
+            ref={formRef}
+            className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row"
+            onSubmit={handleSubmit}
+            noValidate
+            aria-busy={isSubmitting}
           >
-            Zenshuii
-          </a>
-        </p>
-        <div className="flex justify-center gap-6">
-          <a
-            href="https://www.instagram.com/zenshuii/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group"
-            aria-label="Zenshuii on Instagram"
-          >
-            <FaInstagram
-              aria-hidden="true"
-              focusable="false"
-              className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]"
+            <label className="sr-only" htmlFor="waitlist-email">
+              Email address
+            </label>
+            <input
+              ref={emailInputRef}
+              id="waitlist-email"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+              placeholder="you@example.com"
+              autoComplete="email"
+              autoCapitalize="none"
+              inputMode="email"
+              enterKeyHint="send"
+              spellCheck={false}
+              required
+              disabled={isSubmitting}
+              aria-invalid={hasEmailError ? true : undefined}
+              aria-describedby={hasEmailMessage ? 'email-messages' : undefined}
+              className="min-w-0 flex-1 rounded-full border border-white/15 bg-[#1C1C1C] px-5 py-3.5 text-[#F5F5F5] outline-none placeholder:text-[#777] focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/30 disabled:cursor-not-allowed disabled:opacity-70"
             />
-          </a>
-          <a
-            href="https://www.youtube.com/@zenshuiistudios"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group"
-            aria-label="Zenshuii on YouTube"
+            <button
+              type="submit"
+              disabled={isSubmitting || submitted}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
+            >
+              {isSubmitting ? (
+                'Joining...'
+              ) : submitted ? (
+                <>
+                  <Check aria-hidden="true" size={17} /> Joined
+                </>
+              ) : (
+                'Notify me'
+              )}
+            </button>
+          </form>
+
+          <div
+            id="email-messages"
+            className="mt-3 min-h-5"
+            aria-live="polite"
+            aria-atomic="true"
           >
-            <FaYoutube
-              aria-hidden="true"
-              focusable="false"
-              className="w-5 h-5 text-[#A5A5A5] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#70BFBF] dark:text-[#666666]"
-            />
-          </a>
+            {inputError && !submitted && (
+              <p className="text-sm text-[#E3B341]" role="alert">
+                {inputError}
+              </p>
+            )}
+            {error && (
+              <p className="text-sm text-[#EC6F6F]" role="alert">
+                {error}
+              </p>
+            )}
+            {submitted && !error && (
+              <p className="text-sm text-[#72CEA7]" role="status">
+                You&apos;re on the waitlist.
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 px-6 py-8 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm text-[#777] sm:flex-row sm:text-left">
+          <p>
+            © {new Date().getFullYear()} Stoic App by{' '}
+            <a
+              href="https://zenshuii.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[#70BFBF]"
+            >
+              Zenshuii
+            </a>
+          </p>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://www.instagram.com/zenshuii/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[#70BFBF]"
+              aria-label="Zenshuii on Instagram"
+            >
+              <FaInstagram
+                aria-hidden="true"
+                focusable="false"
+                className="h-5 w-5"
+              />
+            </a>
+            <a
+              href="https://www.youtube.com/@zenshuiistudios"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-[#70BFBF]"
+              aria-label="Zenshuii on YouTube"
+            >
+              <FaYoutube
+                aria-hidden="true"
+                focusable="false"
+                className="h-5 w-5"
+              />
+            </a>
+          </div>
         </div>
       </footer>
     </main>
