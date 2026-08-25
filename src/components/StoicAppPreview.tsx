@@ -161,6 +161,7 @@ export function StoicAppPreview() {
         </div>
       </div>
       <div
+        aria-hidden="true"
         className={`relative overflow-hidden rounded-[2.8rem] border p-2 shadow-[0_32px_90px_rgba(0,0,0,0.55)] transition-colors duration-300 ${
           isDark
             ? 'border-white/15 bg-[#101010]'
