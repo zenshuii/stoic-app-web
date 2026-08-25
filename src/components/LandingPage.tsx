@@ -98,7 +98,7 @@ export default function LandingPage() {
           : undefined
 
       if (errorCode === 'permission-denied') {
-        setError('This email may already be on the waitlist.')
+        setError('We could not add your email. Please try again.')
       } else {
         setError('Something went wrong. Please try again.')
       }
