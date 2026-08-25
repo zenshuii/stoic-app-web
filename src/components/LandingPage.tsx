@@ -166,7 +166,7 @@ export default function LandingPage() {
                 />
               </button>
               <p className="text-sm text-[#A5A5A5]">
-                A slower, more intentional daily habit.
+                A calmer, more intentional daily habit.
               </p>
             </div>
           </div>
