@@ -140,7 +140,7 @@ export default function LandingPage() {
           id="top"
           className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-16 lg:grid-cols-[1.03fr_0.97fr] lg:px-8 lg:pb-28 lg:pt-24"
         >
-          <div className="max-w-2xl">
+          <div className="hero-enter max-w-2xl">
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
               Daily reflection
             </p>
@@ -170,14 +170,14 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="hero-enter hero-enter-preview relative">
             <StoicAppPreview />
           </div>
         </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
-        <div data-aos="fade-up">
+        <div data-reveal>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
             A daily pause
           </p>
@@ -187,8 +187,8 @@ export default function LandingPage() {
         </div>
         <blockquote
           className="border-l border-[#70BFBF] pl-7 sm:pl-10"
-          data-aos="fade-up"
-          data-aos-delay="100"
+          data-reveal
+          data-reveal-delay="100"
         >
           <p className="max-w-3xl text-2xl font-medium leading-[1.35] tracking-[-0.03em] text-[#F5F5F5] sm:text-3xl lg:text-4xl">
             “You have power over your mind – not outside events. Realise this,
@@ -203,7 +203,7 @@ export default function LandingPage() {
       <section className="border-y border-white/10 bg-[#2B2B2B]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-            <div data-aos="fade-up">
+            <div data-reveal>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
                 The practice
               </p>
@@ -213,8 +213,8 @@ export default function LandingPage() {
             </div>
             <p
               className="max-w-md text-base leading-7 text-[#A5A5A5]"
-              data-aos="fade-up"
-              data-aos-delay="80"
+              data-reveal
+              data-reveal-delay="80"
             >
               Small rituals become more meaningful when they are easy to return
               to.
@@ -227,8 +227,8 @@ export default function LandingPage() {
                 <article
                   key={number}
                   className="group bg-[#2B2B2B] p-7 transition-colors hover:bg-[#363636] sm:p-9"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
+                  data-reveal
+                  data-reveal-delay={index * 100}
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-sm font-medium text-[#70BFBF]">

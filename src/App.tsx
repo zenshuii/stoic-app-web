@@ -1,6 +1,5 @@
 import './App.css'
 import LandingPage from './components/LandingPage'
-import 'aos/dist/aos.css'
 import { useEffect } from 'react'
 
 function App() {
@@ -9,36 +8,36 @@ function App() {
       '(prefers-reduced-motion: reduce)'
     )
 
-    if (prefersReducedMotion.matches) return
-
-    let cancelled = false
-    const revealAnimatedContent = () => {
-      document.querySelectorAll('[data-aos]').forEach((element) => {
-        element.removeAttribute('data-aos')
-        element.removeAttribute('data-aos-delay')
-      })
+    if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
+      return
     }
 
-    const animationFrame = window.requestAnimationFrame(() => {
-      void import('aos')
-        .then(({ default: AOS }) => {
-          if (cancelled) return
+    const revealElements =
+      document.querySelectorAll<HTMLElement>('[data-reveal]')
+    revealElements.forEach((element) => element.classList.add('reveal-pending'))
 
-          AOS.init({
-            duration: 750,
-            once: true,
-            easing: 'ease-out-cubic',
-            offset: 80,
-          })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+
+          entry.target.classList.add('reveal-visible')
+          observer.unobserve(entry.target)
         })
-        .catch(() => {
-          if (!cancelled) revealAnimatedContent()
-        })
-    })
+      },
+      {
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1,
+      }
+    )
+
+    revealElements.forEach((element) => observer.observe(element))
 
     return () => {
-      cancelled = true
-      window.cancelAnimationFrame(animationFrame)
+      observer.disconnect()
+      revealElements.forEach((element) => {
+        element.classList.remove('reveal-pending', 'reveal-visible')
+      })
     }
   }, [])
 
