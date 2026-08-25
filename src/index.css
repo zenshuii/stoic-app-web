@@ -57,44 +57,6 @@ body {
   }
 }
 
-.preview-glow-mobile {
-  background-image: radial-gradient(
-    ellipse at center,
-    rgb(112 191 191 / 16%),
-    transparent 70%
-  );
-}
-
-.deferred-section {
-  content-visibility: auto;
-}
-
-.deferred-section-quote {
-  contain-intrinsic-size: auto 28rem;
-}
-
-.deferred-section-features {
-  contain-intrinsic-size: auto 74rem;
-}
-
-.deferred-section-waitlist {
-  contain-intrinsic-size: auto 42rem;
-}
-
-@media (min-width: 768px) {
-  .deferred-section-quote {
-    contain-intrinsic-size: auto 26rem;
-  }
-
-  .deferred-section-features {
-    contain-intrinsic-size: auto 42rem;
-  }
-
-  .deferred-section-waitlist {
-    contain-intrinsic-size: auto 38rem;
-  }
-}
-
 @keyframes hero-enter {
   from {
     opacity: 0;

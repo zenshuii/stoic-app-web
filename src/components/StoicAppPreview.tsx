@@ -130,8 +130,7 @@ export function StoicAppPreview() {
       className="relative mx-auto w-full max-w-[25rem]"
       aria-label="Stoic app preview"
     >
-      <div className="preview-glow-mobile absolute -inset-8 rounded-[3.5rem] motion-reduce:hidden sm:hidden" />
-      <div className="absolute -inset-12 hidden rounded-full bg-[#70BFBF]/20 blur-[90px] motion-reduce:hidden sm:block" />
+      <div className="absolute -inset-8 rounded-full bg-[#70BFBF]/18 blur-[48px] motion-reduce:hidden sm:-inset-12 sm:bg-[#70BFBF]/20 sm:blur-[90px]" />
       <div className="relative mb-4 flex justify-center">
         <div
           role="group"

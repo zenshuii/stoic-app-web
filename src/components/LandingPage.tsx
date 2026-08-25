@@ -178,7 +178,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="deferred-section deferred-section-quote mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
         <div data-reveal>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
             A daily pause
@@ -202,7 +202,7 @@ export default function LandingPage() {
         </blockquote>
       </section>
 
-      <section className="deferred-section deferred-section-features border-y border-white/10 bg-[#2B2B2B]">
+      <section className="border-y border-white/10 bg-[#2B2B2B]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div data-reveal>
@@ -256,7 +256,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="deferred-section deferred-section-waitlist mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
         <div
           className="rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-[0_14px_32px_rgba(0,0,0,0.16)] sm:px-12 sm:shadow-[0_20px_45px_rgba(0,0,0,0.22)] lg:px-20 lg:py-16"
           style={{
