@@ -2,7 +2,7 @@ import { FaInstagram, FaYoutube } from 'react-icons/fa'
 import { ArrowRight, BookOpen, Bookmark, Check, Sparkles } from 'lucide-react'
 import { useRef, useState } from 'react'
 
-import logoLight from '../assets/logo/stoic-app-logo-transparent-white.png'
+import logoLight from '../assets/logo/stoic-app-logo.svg'
 import { smoothScrollTo } from '../utils/smoothScrollTo'
 
 import { StoicAppPreview } from './StoicAppPreview'
@@ -121,6 +121,8 @@ export default function LandingPage() {
               src={logoLight}
               alt=""
               aria-hidden="true"
+              width="36"
+              height="36"
               className="h-9 w-9"
             />
             <span className="text-xl font-semibold tracking-[-0.03em]">
