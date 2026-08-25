@@ -109,9 +109,9 @@ export default function LandingPage() {
 
   return (
     <main className="overflow-hidden bg-[#1C1C1C] text-[#F5F5F5]">
-      <section className="relative isolate border-b border-white/10">
+      <section className="hero-surface relative isolate border-b border-white/10">
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-[-14rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[64px] sm:top-[-20rem] sm:h-[44rem] sm:w-[44rem] sm:blur-[110px]" />
+          <div className="absolute left-1/2 top-[-20rem] hidden h-[44rem] w-[44rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[110px] sm:block" />
           <div className="absolute bottom-[-24rem] right-[-10rem] hidden h-[34rem] w-[34rem] rounded-full bg-[#2E8282]/15 blur-[100px] sm:block" />
         </div>
 
@@ -178,7 +178,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
+      <section className="deferred-section deferred-section-quote mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
         <div data-reveal>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
             A daily pause
@@ -202,7 +202,7 @@ export default function LandingPage() {
         </blockquote>
       </section>
 
-      <section className="border-y border-white/10 bg-[#2B2B2B]">
+      <section className="deferred-section deferred-section-features border-y border-white/10 bg-[#2B2B2B]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div data-reveal>
@@ -256,9 +256,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <section className="deferred-section deferred-section-waitlist mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
         <div
-          className="rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-[0_20px_45px_rgba(0,0,0,0.22)] sm:px-12 lg:px-20 lg:py-16"
+          className="rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-[0_14px_32px_rgba(0,0,0,0.16)] sm:px-12 sm:shadow-[0_20px_45px_rgba(0,0,0,0.22)] lg:px-20 lg:py-16"
           style={{
             backgroundImage:
               'radial-gradient(ellipse at 50% 100%, rgba(112, 191, 191, 0.1), transparent 62%)',
