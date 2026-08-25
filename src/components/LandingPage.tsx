@@ -55,11 +55,8 @@ export default function LandingPage() {
     if (!formRef.current) return
 
     const targetY = formRef.current.getBoundingClientRect().top + window.scrollY
-    smoothScrollTo(targetY - 96, 1000)
-
-    window.setTimeout(
-      () => emailInputRef.current?.focus({ preventScroll: true }),
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 700
+    void smoothScrollTo(targetY - 96).then(() =>
+      emailInputRef.current?.focus({ preventScroll: true })
     )
   }
 
@@ -98,7 +95,9 @@ export default function LandingPage() {
           : undefined
 
       if (errorCode === 'permission-denied') {
-        setError('Sign-ups are temporarily unavailable. Please try again later.')
+        setError(
+          'Sign-ups are temporarily unavailable. Please try again later.'
+        )
       } else {
         setError('Something went wrong. Please try again.')
       }
