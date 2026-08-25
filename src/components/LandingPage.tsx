@@ -28,7 +28,7 @@ const features = [
     number: '02',
     title: 'Write for yourself',
     description:
-      'Make space to untangle a thought, notice a feeling, and keep moving.',
+      'A space to reflect, capture what matters, and make sense of the days as they unfold.',
     icon: BookOpen,
   },
   {
@@ -523,7 +523,7 @@ export default function LandingPage() {
           data-aos-delay="100"
         >
           <p className="max-w-3xl text-2xl font-medium leading-[1.35] tracking-[-0.03em] text-[#F5F5F5] sm:text-3xl lg:text-4xl">
-            “You have power over your mind — not outside events. Realise this,
+            “You have power over your mind – not outside events. Realise this,
             and you will find strength.”
           </p>
           <cite className="mt-6 block text-sm not-italic text-[#A5A5A5]">
