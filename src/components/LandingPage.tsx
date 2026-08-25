@@ -255,86 +255,93 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-        <div className="absolute inset-x-6 inset-y-12 -z-10 rounded-[2rem] bg-[#70BFBF]/10 blur-3xl lg:inset-x-8" />
-        <div className="rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-2xl sm:px-12 lg:px-20 lg:py-16">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
-            Early access
-          </p>
-          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-tight tracking-[-0.045em] text-[#F5F5F5] sm:text-5xl">
-            Make reflection part of your day.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-[#A5A5A5]">
-            Join the waitlist and be first to know when Stoic is ready.
-          </p>
-
-          <form
-            ref={formRef}
-            className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row"
-            onSubmit={handleSubmit}
-            noValidate
-            aria-busy={isSubmitting}
-          >
-            <label className="sr-only" htmlFor="waitlist-email">
-              Email address
-            </label>
-            <input
-              ref={emailInputRef}
-              id="waitlist-email"
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="you@example.com"
-              autoComplete="email"
-              autoCapitalize="none"
-              inputMode="email"
-              enterKeyHint="send"
-              spellCheck={false}
-              required
-              disabled={isSubmitting}
-              aria-invalid={hasEmailError ? true : undefined}
-              aria-describedby={hasEmailMessage ? 'email-messages' : undefined}
-              className="min-w-0 flex-1 rounded-full border border-white/15 bg-[#1C1C1C] px-5 py-3.5 text-[#F5F5F5] outline-none placeholder:text-[#777] focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/30 disabled:cursor-not-allowed disabled:opacity-70"
-            />
-            <button
-              type="submit"
-              disabled={isSubmitting || submitted}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
-            >
-              {isSubmitting ? (
-                'Joining...'
-              ) : submitted ? (
-                <>
-                  <Check aria-hidden="true" size={17} /> Joined
-                </>
-              ) : (
-                'Notify me'
-              )}
-            </button>
-          </form>
-
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+        <div className="relative">
           <div
-            id="email-messages"
-            className="mt-3 min-h-5"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {inputError && !submitted && (
-              <p className="text-sm text-[#E3B341]" role="alert">
-                {inputError}
-              </p>
-            )}
-            {error && (
-              <p className="text-sm text-[#EC6F6F]" role="alert">
-                {error}
-              </p>
-            )}
-            {submitted && !error && (
-              <p className="text-sm text-[#72CEA7]" role="status">
-                You&apos;re on the waitlist.
-              </p>
-            )}
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[#70BFBF]/10 blur-3xl"
+          />
+          <div className="relative rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-[0_20px_45px_rgba(0,0,0,0.22)] sm:px-12 lg:px-20 lg:py-16">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
+              Early access
+            </p>
+            <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-tight tracking-[-0.045em] text-[#F5F5F5] sm:text-5xl">
+              Make reflection part of your day.
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-[#A5A5A5]">
+              Join the waitlist and be first to know when Stoic is ready.
+            </p>
+
+            <form
+              ref={formRef}
+              className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row"
+              onSubmit={handleSubmit}
+              noValidate
+              aria-busy={isSubmitting}
+            >
+              <label className="sr-only" htmlFor="waitlist-email">
+                Email address
+              </label>
+              <input
+                ref={emailInputRef}
+                id="waitlist-email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="you@example.com"
+                autoComplete="email"
+                autoCapitalize="none"
+                inputMode="email"
+                enterKeyHint="send"
+                spellCheck={false}
+                required
+                disabled={isSubmitting}
+                aria-invalid={hasEmailError ? true : undefined}
+                aria-describedby={
+                  hasEmailMessage ? 'email-messages' : undefined
+                }
+                className="min-w-0 flex-1 rounded-full border border-white/15 bg-[#1C1C1C] px-5 py-3.5 text-[#F5F5F5] outline-none placeholder:text-[#777] focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/30 disabled:cursor-not-allowed disabled:opacity-70"
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting || submitted}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
+              >
+                {isSubmitting ? (
+                  'Joining...'
+                ) : submitted ? (
+                  <>
+                    <Check aria-hidden="true" size={17} /> Joined
+                  </>
+                ) : (
+                  'Notify me'
+                )}
+              </button>
+            </form>
+
+            <div
+              id="email-messages"
+              className="mt-3 min-h-5"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {inputError && !submitted && (
+                <p className="text-sm text-[#E3B341]" role="alert">
+                  {inputError}
+                </p>
+              )}
+              {error && (
+                <p className="text-sm text-[#EC6F6F]" role="alert">
+                  {error}
+                </p>
+              )}
+              {submitted && !error && (
+                <p className="text-sm text-[#72CEA7]" role="status">
+                  You&apos;re on the waitlist.
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </section>
