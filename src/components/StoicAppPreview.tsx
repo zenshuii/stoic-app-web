@@ -178,7 +178,7 @@ export function StoicAppPreview() {
               isDark ? 'text-[#A5A5A5]' : 'text-[#666666]'
             }`}
           >
-            <span>18:08</span>
+            <span>22:22</span>
             <div className="flex items-center gap-1.5">
               <Signal aria-hidden="true" size={13} strokeWidth={2.2} />
               <Wifi aria-hidden="true" size={13} strokeWidth={2.2} />
@@ -279,7 +279,7 @@ export function StoicAppPreview() {
                 isDark ? 'text-[#F5F5F5]' : 'text-[#333333]'
               }`}
             >
-              Today · Tuesday, 25th August
+              Today · 25th July
             </p>
             <p
               className={`mt-7 text-[0.61rem] font-medium uppercase tracking-[0.14em] ${
