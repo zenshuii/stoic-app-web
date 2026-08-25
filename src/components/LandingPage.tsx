@@ -98,7 +98,7 @@ export default function LandingPage() {
           : undefined
 
       if (errorCode === 'permission-denied') {
-        setError('We could not add your email. Please try again.')
+        setError('Sign-ups are temporarily unavailable. Please try again later.')
       } else {
         setError('Something went wrong. Please try again.')
       }
