@@ -111,8 +111,8 @@ export default function LandingPage() {
     <main className="overflow-hidden bg-[#1C1C1C] text-[#F5F5F5]">
       <section className="relative isolate border-b border-white/10">
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-[-20rem] h-[44rem] w-[44rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[110px]" />
-          <div className="absolute bottom-[-24rem] right-[-10rem] h-[34rem] w-[34rem] rounded-full bg-[#2E8282]/15 blur-[100px]" />
+          <div className="absolute left-1/2 top-[-14rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[64px] sm:top-[-20rem] sm:h-[44rem] sm:w-[44rem] sm:blur-[110px]" />
+          <div className="absolute bottom-[-24rem] right-[-10rem] hidden h-[34rem] w-[34rem] rounded-full bg-[#2E8282]/15 blur-[100px] sm:block" />
         </div>
 
         <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
@@ -140,7 +140,7 @@ export default function LandingPage() {
           id="top"
           className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-16 lg:grid-cols-[1.03fr_0.97fr] lg:px-8 lg:pb-28 lg:pt-24"
         >
-          <div className="max-w-2xl" data-aos="fade-up">
+          <div className="max-w-2xl">
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
               Daily reflection
             </p>
@@ -170,7 +170,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="relative" data-aos="fade-up" data-aos-delay="120">
+          <div className="relative">
             <StoicAppPreview />
           </div>
         </div>
