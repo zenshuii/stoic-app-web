@@ -12,8 +12,12 @@ function App() {
       return
     }
 
-    const revealElements =
-      document.querySelectorAll<HTMLElement>('[data-reveal]')
+    const revealElements = [
+      ...document.querySelectorAll<HTMLElement>('[data-reveal]'),
+      ...(window.matchMedia('(max-width: 1023px)').matches
+        ? document.querySelectorAll<HTMLElement>('[data-mobile-reveal]')
+        : []),
+    ]
     revealElements.forEach((element) => element.classList.add('reveal-pending'))
 
     const observer = new IntersectionObserver(

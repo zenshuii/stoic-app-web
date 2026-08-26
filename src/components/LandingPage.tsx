@@ -178,7 +178,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="hero-enter hero-enter-preview relative">
+          <div className="hero-enter-preview relative" data-mobile-reveal>
             <StoicAppPreview />
           </div>
         </div>
