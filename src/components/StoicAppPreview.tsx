@@ -148,7 +148,7 @@ export function StoicAppPreview() {
             type="button"
             onClick={() => setThemeMode('light')}
             aria-pressed={!isDark}
-            className={`relative z-10 flex h-8 cursor-pointer items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-300 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
+            className={`relative z-10 flex h-8 cursor-pointer items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-300 active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
               !isDark
                 ? 'text-[#333333]'
                 : 'text-[#A5A5A5] hover:text-[#F5F5F5]'
@@ -161,7 +161,7 @@ export function StoicAppPreview() {
             type="button"
             onClick={() => setThemeMode('dark')}
             aria-pressed={isDark}
-            className={`relative z-10 flex h-8 cursor-pointer items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-300 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
+            className={`relative z-10 flex h-8 cursor-pointer items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-300 active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
               isDark
                 ? 'text-[#F5F5F5]'
                 : 'text-[#A5A5A5] hover:text-[#F5F5F5]'

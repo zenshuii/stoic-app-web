@@ -138,7 +138,7 @@ export default function LandingPage() {
           <a
             href="#waitlist"
             onClick={handleHeroCtaClick}
-            className="rounded-full border border-[#70BFBF]/45 bg-[#70BFBF]/10 px-4 py-2 text-sm font-medium text-[#F5F5F5] transition hover:border-[#70BFBF] hover:bg-[#70BFBF] hover:text-[#1C1C1C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+            className="rounded-full border border-[#70BFBF]/45 bg-[#70BFBF]/10 px-4 py-2 text-sm font-medium text-[#F5F5F5] transition hover:border-[#70BFBF] hover:bg-[#70BFBF] hover:text-[#1C1C1C] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
           >
             Join the waitlist
           </a>
@@ -163,13 +163,13 @@ export default function LandingPage() {
               <a
                 href="#waitlist"
                 onClick={handleHeroCtaClick}
-                className="group inline-flex items-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 text-base font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 text-base font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
               >
                 Join the waitlist
                 <ArrowRight
                   aria-hidden="true"
                   size={18}
-                  className="transition-transform group-hover:translate-x-0.5"
+                  className="transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none"
                 />
               </a>
               <p className="text-sm text-[#A5A5A5]">
@@ -309,12 +309,12 @@ export default function LandingPage() {
               disabled={isSubmitting}
               aria-invalid={hasEmailError ? true : undefined}
               aria-describedby={hasEmailMessage ? 'email-messages' : undefined}
-              className="min-w-0 flex-1 rounded-full border border-white/15 bg-[#1C1C1C] px-5 py-3.5 text-[#F5F5F5] outline-none placeholder:text-[#777] focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/30 disabled:cursor-not-allowed disabled:opacity-70"
+              className="min-w-0 flex-1 rounded-full border border-white/15 bg-[#1C1C1C] px-5 py-3.5 text-[#F5F5F5] outline-none transition-[border-color,box-shadow] duration-300 placeholder:text-[#777] focus:border-[#70BFBF] focus:ring-2 focus:ring-[#70BFBF]/30 disabled:cursor-not-allowed disabled:opacity-70 motion-reduce:transition-none"
             />
             <button
               type="submit"
               disabled={isSubmitting || submitted}
-              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
+              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] active:opacity-70 disabled:cursor-not-allowed disabled:opacity-75 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
             >
               {isSubmitting ? (
                 'Joining...'
@@ -365,17 +365,17 @@ export default function LandingPage() {
               href="https://zenshuii.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-[#70BFBF]"
+              className="rounded-sm transition-colors hover:text-[#70BFBF] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
             >
               Zenshuii
             </a>
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-2">
             <a
               href="https://www.instagram.com/zenshuii/"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-[#70BFBF]"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
               aria-label="Zenshuii on Instagram"
             >
               <FaInstagram
@@ -388,7 +388,7 @@ export default function LandingPage() {
               href="https://www.youtube.com/@zenshuiistudios"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-[#70BFBF]"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
               aria-label="Zenshuii on YouTube"
             >
               <FaYoutube
