@@ -15,8 +15,9 @@ function App() {
     const sectionRevealElements = [
       ...document.querySelectorAll<HTMLElement>('[data-reveal]'),
     ]
-    const previewRevealElements = window.matchMedia('(max-width: 1023px)')
-      .matches
+    const previewRevealElements =
+      document.documentElement.classList.contains('reveal-ready') &&
+      window.matchMedia('(max-width: 1023px)').matches
       ? [...document.querySelectorAll<HTMLElement>('[data-mobile-reveal]')]
       : []
     const revealElements = [...sectionRevealElements, ...previewRevealElements]
