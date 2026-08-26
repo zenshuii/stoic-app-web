@@ -37,6 +37,11 @@
 
           if (!root.classList.contains('hero-motion-pending')) return
 
+          if ('fonts' in document && document.fonts.status === 'loaded') {
+            root.classList.remove('hero-motion-pending')
+            return
+          }
+
           root.classList.add('hero-motion-skipped')
           root.classList.remove('hero-motion-pending')
         }, 1500)
