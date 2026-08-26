@@ -235,26 +235,30 @@ export default function LandingPage() {
                 <article
                   key={number}
                   className="group bg-[#2B2B2B] p-7 transition-colors hover:bg-[#363636] sm:p-9"
-                  data-reveal
-                  data-reveal-delay={index * 100}
                 >
-                  <div className="flex items-start justify-between">
-                    <span className="text-sm font-medium text-[#70BFBF]">
-                      {number}
-                    </span>
-                    <Icon
-                      aria-hidden="true"
-                      size={22}
-                      strokeWidth={1.5}
-                      className="text-[#A5A5A5] transition-colors group-hover:text-[#70BFBF]"
-                    />
+                  <div
+                    data-reveal
+                    data-reveal-delay={index * 80}
+                    data-reveal-variant="feature"
+                  >
+                    <div className="flex items-start justify-between">
+                      <span className="text-sm font-medium text-[#70BFBF]">
+                        {number}
+                      </span>
+                      <Icon
+                        aria-hidden="true"
+                        size={22}
+                        strokeWidth={1.5}
+                        className="text-[#A5A5A5] transition-colors group-hover:text-[#70BFBF]"
+                      />
+                    </div>
+                    <h3 className="mt-12 text-xl font-semibold tracking-[-0.025em] text-[#F5F5F5] md:mt-16">
+                      {title}
+                    </h3>
+                    <p className="mt-4 max-w-xs leading-7 text-[#A5A5A5]">
+                      {description}
+                    </p>
                   </div>
-                  <h3 className="mt-12 text-xl font-semibold tracking-[-0.025em] text-[#F5F5F5] md:mt-16">
-                    {title}
-                  </h3>
-                  <p className="mt-4 max-w-xs leading-7 text-[#A5A5A5]">
-                    {description}
-                  </p>
                 </article>
               )
             )}

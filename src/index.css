@@ -115,8 +115,22 @@ body {
   --reveal-delay: 100ms;
 }
 
+[data-reveal-delay='160'] {
+  --reveal-delay: 160ms;
+}
+
 [data-reveal-delay='200'] {
   --reveal-delay: 200ms;
+}
+
+[data-reveal-variant='feature'] {
+  --reveal-distance: 16px;
+  --reveal-duration: 800ms;
+}
+
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance, 24px));
 }
 
 .reveal-pending {

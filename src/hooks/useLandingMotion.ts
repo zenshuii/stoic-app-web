@@ -90,9 +90,6 @@ export function useLandingMotion() {
     return () => {
       sectionObserver.disconnect()
       previewObserver?.disconnect()
-      revealElements.forEach((element) => {
-        element.classList.remove('reveal-pending', 'reveal-visible')
-      })
     }
   }, [])
 }
