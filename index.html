@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (
+        'IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        document.documentElement.classList.add('reveal-ready')
+      }
+    </script>
     <link
       rel="preload"
       href="/src/assets/fonts/poppins-latin-600.woff2"
