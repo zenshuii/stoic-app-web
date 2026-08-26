@@ -130,20 +130,27 @@ export function StoicAppPreview() {
       className="relative mx-auto w-full max-w-[25rem]"
       aria-label="Stoic app preview"
     >
-      <div className="absolute -inset-8 rounded-full bg-[#70BFBF]/18 blur-[48px] motion-reduce:hidden sm:-inset-12 sm:bg-[#70BFBF]/20 sm:blur-[90px]" />
       <div className="relative mb-4 flex justify-center">
         <div
           role="group"
-          className="inline-flex rounded-full border border-white/10 bg-[#2B2B2B] p-1 shadow-lg"
+          className="relative inline-grid grid-cols-2 rounded-full border border-white/10 bg-[#2B2B2B] p-1 shadow-lg"
           aria-label="Preview theme"
         >
+          <span
+            aria-hidden="true"
+            className={`pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-full transition-[translate,background-color] duration-300 ease-[cubic-bezier(0.22,0.65,0.35,1)] motion-reduce:transition-none ${
+              isDark
+                ? 'translate-x-full bg-[#444444]'
+                : 'translate-x-0 bg-[#F5F5F5]'
+            }`}
+          />
           <button
             type="button"
             onClick={() => setThemeMode('light')}
             aria-pressed={!isDark}
-            className={`flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
+            className={`relative z-10 flex h-8 cursor-pointer items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-300 active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
               !isDark
-                ? 'bg-[#F5F5F5] text-[#333333]'
+                ? 'text-[#333333]'
                 : 'text-[#A5A5A5] hover:text-[#F5F5F5]'
             }`}
           >
@@ -154,9 +161,9 @@ export function StoicAppPreview() {
             type="button"
             onClick={() => setThemeMode('dark')}
             aria-pressed={isDark}
-            className={`flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
+            className={`relative z-10 flex h-8 cursor-pointer items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-300 active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] ${
               isDark
-                ? 'bg-[#444444] text-[#F5F5F5]'
+                ? 'text-[#F5F5F5]'
                 : 'text-[#A5A5A5] hover:text-[#F5F5F5]'
             }`}
           >
@@ -167,7 +174,7 @@ export function StoicAppPreview() {
       </div>
       <div
         aria-hidden="true"
-        className={`relative overflow-hidden rounded-[2.8rem] border p-2 shadow-[0_20px_48px_rgba(0,0,0,0.38)] transition-colors duration-300 sm:shadow-[0_32px_90px_rgba(0,0,0,0.55)] ${
+        className={`preview-phone-frame relative overflow-hidden rounded-[2.8rem] border p-2 transition-colors duration-300 ${
           isDark
             ? 'border-white/15 bg-[#101010]'
             : 'border-[#D6D6D6] bg-[#E9E9E9]'

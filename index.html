@@ -3,6 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      const navigationEntry =
+        typeof performance.getEntriesByType === 'function'
+          ? performance.getEntriesByType('navigation')[0]
+          : undefined
+
+      if (navigationEntry?.type === 'reload' && !window.location.hash) {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual'
+        }
+
+        window.addEventListener(
+          'pageshow',
+          () => {
+            window.scrollTo(0, 0)
+
+            if ('scrollRestoration' in history) {
+              history.scrollRestoration = 'auto'
+            }
+          },
+          { once: true }
+        )
+      }
+
+      if (
+        'IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        document.documentElement.classList.add('reveal-ready')
+        window.setTimeout(() => {
+          document.documentElement.classList.remove('reveal-ready')
+        }, 3000)
+      }
+    </script>
     <link
       rel="preload"
       href="/src/assets/fonts/poppins-latin-600.woff2"

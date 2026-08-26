@@ -12,29 +12,50 @@ function App() {
       return
     }
 
-    const revealElements =
-      document.querySelectorAll<HTMLElement>('[data-reveal]')
+    const sectionRevealElements = [
+      ...document.querySelectorAll<HTMLElement>('[data-reveal]'),
+    ]
+    const previewRevealElements =
+      document.documentElement.classList.contains('reveal-ready') &&
+      window.matchMedia('(max-width: 1023px)').matches
+      ? [...document.querySelectorAll<HTMLElement>('[data-mobile-reveal]')]
+      : []
+    const revealElements = [...sectionRevealElements, ...previewRevealElements]
     revealElements.forEach((element) => element.classList.add('reveal-pending'))
+    document.documentElement.classList.remove('reveal-ready')
 
-    const observer = new IntersectionObserver(
-      (entries) => {
+    const createRevealObserver = (
+      elements: HTMLElement[],
+      options: IntersectionObserverInit
+    ) => {
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return
 
           entry.target.classList.add('reveal-visible')
           observer.unobserve(entry.target)
         })
-      },
-      {
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.1,
-      }
-    )
+      }, options)
 
-    revealElements.forEach((element) => observer.observe(element))
+      elements.forEach((element) => observer.observe(element))
+      return observer
+    }
+
+    const sectionObserver = createRevealObserver(sectionRevealElements, {
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.1,
+    })
+    const previewObserver =
+      previewRevealElements.length > 0
+        ? createRevealObserver(previewRevealElements, {
+            rootMargin: '0px 0px 120px 0px',
+            threshold: 0.01,
+          })
+        : null
 
     return () => {
-      observer.disconnect()
+      sectionObserver.disconnect()
+      previewObserver?.disconnect()
       revealElements.forEach((element) => {
         element.classList.remove('reveal-pending', 'reveal-visible')
       })
