@@ -56,9 +56,10 @@ export default function LandingPage() {
     if (submitted) setSubmitted(false)
   }
 
-  const handleHeroCtaClick = () => {
+  const handleHeroCtaClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!formRef.current) return
 
+    event.preventDefault()
     const targetY = formRef.current.getBoundingClientRect().top + window.scrollY
     void smoothScrollTo(targetY - 96).then(() =>
       emailInputRef.current?.focus({ preventScroll: true })
@@ -134,13 +135,13 @@ export default function LandingPage() {
               Stoic
             </span>
           </div>
-          <button
-            type="button"
+          <a
+            href="#waitlist"
             onClick={handleHeroCtaClick}
             className="rounded-full border border-[#70BFBF]/45 bg-[#70BFBF]/10 px-4 py-2 text-sm font-medium text-[#F5F5F5] transition hover:border-[#70BFBF] hover:bg-[#70BFBF] hover:text-[#1C1C1C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
           >
             Join the waitlist
-          </button>
+          </a>
         </header>
 
         <div
@@ -159,8 +160,8 @@ export default function LandingPage() {
               wisdom together in a quieter practice.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-5">
-              <button
-                type="button"
+              <a
+                href="#waitlist"
                 onClick={handleHeroCtaClick}
                 className="group inline-flex items-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 text-base font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
               >
@@ -170,7 +171,7 @@ export default function LandingPage() {
                   size={18}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </button>
+              </a>
               <p className="text-sm text-[#A5A5A5]">
                 A calmer, more intentional daily habit.
               </p>
@@ -281,7 +282,8 @@ export default function LandingPage() {
 
           <form
             ref={formRef}
-            className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row"
+            id="waitlist"
+            className="mx-auto mt-9 flex max-w-xl scroll-mt-24 flex-col gap-3 sm:flex-row"
             onSubmit={handleSubmit}
             noValidate
             inert={!isHydrated}
