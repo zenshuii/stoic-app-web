@@ -169,7 +169,7 @@ export default function LandingPage() {
                 <ArrowRight
                   aria-hidden="true"
                   size={18}
-                  className="transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none"
+                  className="transition-transform motion-safe:group-hover:translate-x-0.5 motion-reduce:transition-none"
                 />
               </a>
               <p className="text-sm text-[#A5A5A5]">
