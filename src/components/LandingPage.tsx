@@ -150,8 +150,8 @@ export default function LandingPage() {
               Make room for a clearer mind.
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-8 text-[#A5A5A5] sm:text-xl">
-              Stoic brings daily perspective, personal journalling, and the
-              wisdom worth returning to into one quieter practice.
+              Stoic brings daily perspective, personal journalling, and timeless
+              wisdom together in a quieter practice.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-5">
               <button
