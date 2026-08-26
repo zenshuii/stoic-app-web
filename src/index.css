@@ -96,6 +96,11 @@ body {
   animation-play-state: paused;
 }
 
+.hero-motion-skipped .hero-enter,
+.hero-motion-skipped .hero-enter-preview {
+  animation: none;
+}
+
 [data-mobile-reveal] {
   --reveal-delay: 150ms;
   --reveal-distance: 18px;
@@ -131,6 +136,12 @@ body {
 .hero-motion-pending [data-mobile-reveal].reveal-pending.reveal-visible {
   opacity: 0;
   transform: translateY(var(--reveal-distance, 18px));
+}
+
+.hero-motion-skipped [data-mobile-reveal].reveal-pending {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 @media (max-width: 1023px) {

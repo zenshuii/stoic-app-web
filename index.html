@@ -33,7 +33,12 @@
       if (!prefersReducedMotion) {
         document.documentElement.classList.add('hero-motion-pending')
         window.setTimeout(() => {
-          document.documentElement.classList.remove('hero-motion-pending')
+          const root = document.documentElement
+
+          if (!root.classList.contains('hero-motion-pending')) return
+
+          root.classList.add('hero-motion-skipped')
+          root.classList.remove('hero-motion-pending')
         }, 1500)
       }
 
