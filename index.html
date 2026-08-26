@@ -8,6 +8,9 @@
         typeof performance.getEntriesByType === 'function'
           ? performance.getEntriesByType('navigation')[0]
           : undefined
+      const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches
 
       if (navigationEntry?.type === 'reload' && !window.location.hash) {
         if ('scrollRestoration' in history) {
@@ -27,10 +30,24 @@
         )
       }
 
-      if (
-        'IntersectionObserver' in window &&
-        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      ) {
+      if (!prefersReducedMotion) {
+        document.documentElement.classList.add('hero-motion-pending')
+        window.setTimeout(() => {
+          const root = document.documentElement
+
+          if (!root.classList.contains('hero-motion-pending')) return
+
+          if ('fonts' in document && document.fonts.status === 'loaded') {
+            root.classList.remove('hero-motion-pending')
+            return
+          }
+
+          root.classList.add('hero-motion-skipped')
+          root.classList.remove('hero-motion-pending')
+        }, 1500)
+      }
+
+      if ('IntersectionObserver' in window && !prefersReducedMotion) {
         document.documentElement.classList.add('reveal-ready')
         window.setTimeout(() => {
           document.documentElement.classList.remove('reveal-ready')
@@ -40,6 +57,20 @@
     <link
       rel="preload"
       href="/src/assets/fonts/poppins-latin-600.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/src/assets/fonts/poppins-latin-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/src/assets/fonts/poppins-latin-500.woff2"
       as="font"
       type="font/woff2"
       crossorigin
