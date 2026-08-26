@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-      const navigationEntry = performance.getEntriesByType('navigation')[0]
+      const navigationEntry =
+        typeof performance.getEntriesByType === 'function'
+          ? performance.getEntriesByType('navigation')[0]
+          : undefined
 
       if (navigationEntry?.type === 'reload' && !window.location.hash) {
         if ('scrollRestoration' in history) {
