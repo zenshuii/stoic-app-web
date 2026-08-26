@@ -47,6 +47,20 @@ body {
   color: #f5f5f5;
 }
 
+.preview-phone-frame {
+  box-shadow:
+    0 0 38px 8px rgba(112, 191, 191, 0.12),
+    0 20px 48px rgba(0, 0, 0, 0.38);
+}
+
+@media (min-width: 640px) {
+  .preview-phone-frame {
+    box-shadow:
+      0 0 64px 14px rgba(112, 191, 191, 0.14),
+      0 32px 90px rgba(0, 0, 0, 0.55);
+  }
+}
+
 @media (max-width: 639px) {
   .hero-surface {
     background-image: radial-gradient(

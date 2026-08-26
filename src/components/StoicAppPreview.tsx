@@ -130,7 +130,6 @@ export function StoicAppPreview() {
       className="relative mx-auto w-full max-w-[25rem]"
       aria-label="Stoic app preview"
     >
-      <div className="absolute -inset-8 rounded-full bg-[#70BFBF]/18 blur-[48px] motion-reduce:hidden sm:-inset-12 sm:bg-[#70BFBF]/20 sm:blur-[90px]" />
       <div className="relative mb-4 flex justify-center">
         <div
           role="group"
@@ -167,7 +166,7 @@ export function StoicAppPreview() {
       </div>
       <div
         aria-hidden="true"
-        className={`relative overflow-hidden rounded-[2.8rem] border p-2 shadow-[0_20px_48px_rgba(0,0,0,0.38)] transition-colors duration-300 sm:shadow-[0_32px_90px_rgba(0,0,0,0.55)] ${
+        className={`preview-phone-frame relative overflow-hidden rounded-[2.8rem] border p-2 transition-colors duration-300 ${
           isDark
             ? 'border-white/15 bg-[#101010]'
             : 'border-[#D6D6D6] bg-[#E9E9E9]'
