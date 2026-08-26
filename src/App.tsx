@@ -45,14 +45,17 @@ function App() {
       rootMargin: '0px 0px -10% 0px',
       threshold: 0.1,
     })
-    const previewObserver = createRevealObserver(previewRevealElements, {
-      rootMargin: '0px 0px 120px 0px',
-      threshold: 0.01,
-    })
+    const previewObserver =
+      previewRevealElements.length > 0
+        ? createRevealObserver(previewRevealElements, {
+            rootMargin: '0px 0px 120px 0px',
+            threshold: 0.01,
+          })
+        : null
 
     return () => {
       sectionObserver.disconnect()
-      previewObserver.disconnect()
+      previewObserver?.disconnect()
       revealElements.forEach((element) => {
         element.classList.remove('reveal-pending', 'reveal-visible')
       })
