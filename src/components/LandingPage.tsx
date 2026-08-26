@@ -211,7 +211,7 @@ export default function LandingPage() {
       <section className="border-y border-white/10 bg-[#2B2B2B]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-            <div data-reveal>
+            <div data-reveal data-reveal-section="practice">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
                 The practice
               </p>
@@ -223,6 +223,7 @@ export default function LandingPage() {
               className="max-w-md text-base leading-7 text-[#A5A5A5]"
               data-reveal
               data-reveal-delay="80"
+              data-reveal-section="practice"
             >
               Small rituals become more meaningful when they are easy to return
               to.
@@ -235,26 +236,31 @@ export default function LandingPage() {
                 <article
                   key={number}
                   className="group bg-[#2B2B2B] p-7 transition-colors hover:bg-[#363636] sm:p-9"
-                  data-reveal
-                  data-reveal-delay={index * 100}
                 >
-                  <div className="flex items-start justify-between">
-                    <span className="text-sm font-medium text-[#70BFBF]">
-                      {number}
-                    </span>
-                    <Icon
-                      aria-hidden="true"
-                      size={22}
-                      strokeWidth={1.5}
-                      className="text-[#A5A5A5] transition-colors group-hover:text-[#70BFBF]"
-                    />
+                  <div
+                    data-reveal
+                    data-reveal-delay={index * 80}
+                    data-reveal-section="practice"
+                    data-reveal-variant="feature"
+                  >
+                    <div className="flex items-start justify-between">
+                      <span className="text-sm font-medium text-[#70BFBF]">
+                        {number}
+                      </span>
+                      <Icon
+                        aria-hidden="true"
+                        size={22}
+                        strokeWidth={1.5}
+                        className="text-[#A5A5A5] transition-colors group-hover:text-[#70BFBF]"
+                      />
+                    </div>
+                    <h3 className="mt-12 text-xl font-semibold tracking-[-0.025em] text-[#F5F5F5] md:mt-16">
+                      {title}
+                    </h3>
+                    <p className="mt-4 max-w-xs leading-7 text-[#A5A5A5]">
+                      {description}
+                    </p>
                   </div>
-                  <h3 className="mt-16 text-xl font-semibold tracking-[-0.025em] text-[#F5F5F5]">
-                    {title}
-                  </h3>
-                  <p className="mt-4 max-w-xs leading-7 text-[#A5A5A5]">
-                    {description}
-                  </p>
                 </article>
               )
             )}
