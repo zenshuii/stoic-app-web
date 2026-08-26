@@ -249,7 +249,7 @@ export default function LandingPage() {
                       className="text-[#A5A5A5] transition-colors group-hover:text-[#70BFBF]"
                     />
                   </div>
-                  <h3 className="mt-16 text-xl font-semibold tracking-[-0.025em] text-[#F5F5F5]">
+                  <h3 className="mt-12 text-xl font-semibold tracking-[-0.025em] text-[#F5F5F5] md:mt-16">
                     {title}
                   </h3>
                   <p className="mt-4 max-w-xs leading-7 text-[#A5A5A5]">
