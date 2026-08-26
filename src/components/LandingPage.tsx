@@ -211,7 +211,7 @@ export default function LandingPage() {
       <section className="border-y border-white/10 bg-[#2B2B2B]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-            <div data-reveal>
+            <div data-reveal data-reveal-section="practice">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
                 The practice
               </p>
@@ -223,6 +223,7 @@ export default function LandingPage() {
               className="max-w-md text-base leading-7 text-[#A5A5A5]"
               data-reveal
               data-reveal-delay="80"
+              data-reveal-section="practice"
             >
               Small rituals become more meaningful when they are easy to return
               to.
@@ -239,6 +240,7 @@ export default function LandingPage() {
                   <div
                     data-reveal
                     data-reveal-delay={index * 80}
+                    data-reveal-section="practice"
                     data-reveal-variant="feature"
                   >
                     <div className="flex items-start justify-between">

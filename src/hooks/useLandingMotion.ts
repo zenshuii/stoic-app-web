@@ -57,10 +57,20 @@ export function useLandingMotion() {
     }
 
     const root = document.documentElement
-    const sectionRevealElements = [
+    const allSectionRevealElements = [
       ...document.querySelectorAll<HTMLElement>('[data-reveal]'),
     ]
     const isMobileViewport = window.matchMedia(MOBILE_VIEWPORT_QUERY).matches
+    const practiceRevealElements = isMobileViewport
+      ? []
+      : allSectionRevealElements.filter(
+          (element) => element.dataset.revealSection === 'practice'
+        )
+    const sectionRevealElements = isMobileViewport
+      ? allSectionRevealElements
+      : allSectionRevealElements.filter(
+          (element) => element.dataset.revealSection !== 'practice'
+        )
 
     if (isMobileViewport && root.classList.contains('reveal-ready')) {
       mobilePreviewRevealEnabled.current = true
@@ -70,7 +80,10 @@ export function useLandingMotion() {
       isMobileViewport && mobilePreviewRevealEnabled.current
         ? [...document.querySelectorAll<HTMLElement>('[data-mobile-reveal]')]
         : []
-    const revealElements = [...sectionRevealElements, ...previewRevealElements]
+    const revealElements = [
+      ...allSectionRevealElements,
+      ...previewRevealElements,
+    ]
 
     revealElements.forEach((element) => element.classList.add('reveal-pending'))
     root.classList.remove('reveal-ready')
@@ -79,6 +92,13 @@ export function useLandingMotion() {
       rootMargin: '0px 0px -10% 0px',
       threshold: 0.1,
     })
+    const practiceObserver =
+      practiceRevealElements.length > 0
+        ? createRevealObserver(practiceRevealElements, {
+            rootMargin: '0px 0px -20% 0px',
+            threshold: 0.1,
+          })
+        : null
     const previewObserver =
       previewRevealElements.length > 0
         ? createRevealObserver(previewRevealElements, {
@@ -89,6 +109,7 @@ export function useLandingMotion() {
 
     return () => {
       sectionObserver.disconnect()
+      practiceObserver?.disconnect()
       previewObserver?.disconnect()
     }
   }, [])
