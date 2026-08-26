@@ -1,8 +1,8 @@
 import { FaInstagram, FaYoutube } from 'react-icons/fa'
 import { ArrowRight, BookOpen, Bookmark, Check, Sparkles } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import logoLight from '../assets/logo/stoic-app-logo-transparent-white.png'
+import logoLight from '../assets/logo/stoic-app-logo.svg'
 import { smoothScrollTo } from '../utils/smoothScrollTo'
 
 import { StoicAppPreview } from './StoicAppPreview'
@@ -32,6 +32,7 @@ const features = [
 ]
 
 export default function LandingPage() {
+  const [isHydrated, setIsHydrated] = useState(false)
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -44,6 +45,10 @@ export default function LandingPage() {
   const hasEmailError = !!inputError || !!error
   const hasEmailMessage = hasEmailError || (submitted && !error)
 
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
+
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
     setInputError('')
@@ -51,9 +56,10 @@ export default function LandingPage() {
     if (submitted) setSubmitted(false)
   }
 
-  const handleHeroCtaClick = () => {
+  const handleHeroCtaClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!formRef.current) return
 
+    event.preventDefault()
     const targetY = formRef.current.getBoundingClientRect().top + window.scrollY
     void smoothScrollTo(targetY - 96).then(() =>
       emailInputRef.current?.focus({ preventScroll: true })
@@ -109,9 +115,9 @@ export default function LandingPage() {
 
   return (
     <main className="overflow-hidden bg-[#1C1C1C] text-[#F5F5F5]">
-      <section className="relative isolate border-b border-white/10">
+      <section className="hero-surface relative isolate border-b border-white/10">
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-[-14rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[64px] sm:top-[-20rem] sm:h-[44rem] sm:w-[44rem] sm:blur-[110px]" />
+          <div className="absolute left-1/2 top-[-20rem] hidden h-[44rem] w-[44rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[110px] sm:block" />
           <div className="absolute bottom-[-24rem] right-[-10rem] hidden h-[34rem] w-[34rem] rounded-full bg-[#2E8282]/15 blur-[100px] sm:block" />
         </div>
 
@@ -121,26 +127,28 @@ export default function LandingPage() {
               src={logoLight}
               alt=""
               aria-hidden="true"
+              width="36"
+              height="36"
               className="h-9 w-9"
             />
             <span className="text-xl font-semibold tracking-[-0.03em]">
               Stoic
             </span>
           </div>
-          <button
-            type="button"
+          <a
+            href="#waitlist"
             onClick={handleHeroCtaClick}
             className="rounded-full border border-[#70BFBF]/45 bg-[#70BFBF]/10 px-4 py-2 text-sm font-medium text-[#F5F5F5] transition hover:border-[#70BFBF] hover:bg-[#70BFBF] hover:text-[#1C1C1C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
           >
             Join the waitlist
-          </button>
+          </a>
         </header>
 
         <div
           id="top"
           className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-16 lg:grid-cols-[1.03fr_0.97fr] lg:px-8 lg:pb-28 lg:pt-24"
         >
-          <div className="max-w-2xl">
+          <div className="hero-enter max-w-2xl">
             <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
               Daily reflection
             </p>
@@ -148,12 +156,12 @@ export default function LandingPage() {
               Make room for a clearer mind.
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-8 text-[#A5A5A5] sm:text-xl">
-              Stoic brings daily perspective, personal journalling, and the
-              wisdom worth returning to into one quieter practice.
+              Stoic brings daily perspective, personal journalling, and timeless
+              wisdom together in a quieter practice.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-5">
-              <button
-                type="button"
+              <a
+                href="#waitlist"
                 onClick={handleHeroCtaClick}
                 className="group inline-flex items-center gap-2 rounded-full bg-[#70BFBF] px-6 py-3.5 text-base font-semibold text-[#1C1C1C] transition hover:bg-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
               >
@@ -163,21 +171,21 @@ export default function LandingPage() {
                   size={18}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
-              </button>
+              </a>
               <p className="text-sm text-[#A5A5A5]">
                 A calmer, more intentional daily habit.
               </p>
             </div>
           </div>
 
-          <div className="relative">
+          <div className="hero-enter hero-enter-preview relative">
             <StoicAppPreview />
           </div>
         </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
-        <div data-aos="fade-up">
+        <div data-reveal>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
             A daily pause
           </p>
@@ -187,8 +195,8 @@ export default function LandingPage() {
         </div>
         <blockquote
           className="border-l border-[#70BFBF] pl-7 sm:pl-10"
-          data-aos="fade-up"
-          data-aos-delay="100"
+          data-reveal
+          data-reveal-delay="100"
         >
           <p className="max-w-3xl text-2xl font-medium leading-[1.35] tracking-[-0.03em] text-[#F5F5F5] sm:text-3xl lg:text-4xl">
             “You have power over your mind – not outside events. Realise this,
@@ -203,7 +211,7 @@ export default function LandingPage() {
       <section className="border-y border-white/10 bg-[#2B2B2B]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-            <div data-aos="fade-up">
+            <div data-reveal>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#70BFBF]">
                 The practice
               </p>
@@ -213,8 +221,8 @@ export default function LandingPage() {
             </div>
             <p
               className="max-w-md text-base leading-7 text-[#A5A5A5]"
-              data-aos="fade-up"
-              data-aos-delay="80"
+              data-reveal
+              data-reveal-delay="80"
             >
               Small rituals become more meaningful when they are easy to return
               to.
@@ -227,8 +235,8 @@ export default function LandingPage() {
                 <article
                   key={number}
                   className="group bg-[#2B2B2B] p-7 transition-colors hover:bg-[#363636] sm:p-9"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
+                  data-reveal
+                  data-reveal-delay={index * 100}
                 >
                   <div className="flex items-start justify-between">
                     <span className="text-sm font-medium text-[#70BFBF]">
@@ -256,7 +264,7 @@ export default function LandingPage() {
 
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
         <div
-          className="rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-[0_20px_45px_rgba(0,0,0,0.22)] sm:px-12 lg:px-20 lg:py-16"
+          className="rounded-[2rem] border border-[#70BFBF]/30 bg-[#222222] px-6 py-12 text-center shadow-[0_14px_32px_rgba(0,0,0,0.16)] sm:px-12 sm:shadow-[0_20px_45px_rgba(0,0,0,0.22)] lg:px-20 lg:py-16"
           style={{
             backgroundImage:
               'radial-gradient(ellipse at 50% 100%, rgba(112, 191, 191, 0.1), transparent 62%)',
@@ -274,9 +282,11 @@ export default function LandingPage() {
 
           <form
             ref={formRef}
-            className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row"
+            id="waitlist"
+            className="mx-auto mt-9 flex max-w-xl scroll-mt-24 flex-col gap-3 sm:flex-row"
             onSubmit={handleSubmit}
             noValidate
+            inert={!isHydrated}
             aria-busy={isSubmitting}
           >
             <label className="sr-only" htmlFor="waitlist-email">
@@ -346,7 +356,11 @@ export default function LandingPage() {
       <footer className="border-t border-white/10 px-6 py-8 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm text-[#777] sm:flex-row sm:text-left">
           <p>
-            © {new Date().getFullYear()} Stoic App by{' '}
+            ©{' '}
+            <span className="inline-block w-[4ch] tabular-nums">
+              {isHydrated ? new Date().getFullYear() : null}
+            </span>{' '}
+            Stoic App by{' '}
             <a
               href="https://zenshuii.com"
               target="_blank"
