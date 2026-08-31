@@ -340,7 +340,7 @@ export default function LandingPage() {
               href="/privacy.html"
               className="text-[#70BFBF] underline underline-offset-4 transition-colors hover:text-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
             >
-              Read the privacy notice.
+              Privacy notice.
             </a>
           </p>
 
