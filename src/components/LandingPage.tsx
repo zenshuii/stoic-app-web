@@ -333,6 +333,16 @@ export default function LandingPage() {
               )}
             </button>
           </form>
+          <p className="mx-auto mt-4 max-w-xl text-xs leading-5 text-[#A5A5A5]">
+            By joining the waitlist, you agree to receive Stoic launch updates.
+            {' '}
+            <a
+              href="/privacy.html"
+              className="text-[#70BFBF] underline underline-offset-4 transition-colors hover:text-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
+            >
+              Privacy notice.
+            </a>
+          </p>
 
           <div
             id="email-messages"
@@ -361,21 +371,32 @@ export default function LandingPage() {
 
       <footer className="border-t border-white/10 px-6 py-8 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm text-[#777] sm:flex-row sm:text-left">
-          <p>
-            ©{' '}
-            <span className="inline-block w-[4ch] tabular-nums">
-              {isHydrated ? new Date().getFullYear() : null}
-            </span>{' '}
-            Stoic App by{' '}
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:justify-start">
+            <p>
+              ©{' '}
+              <span className="inline-block w-[4ch] tabular-nums">
+                {isHydrated ? new Date().getFullYear() : null}
+              </span>{' '}
+              Stoic App by{' '}
+              <a
+                href="https://zenshuii.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-sm underline decoration-[#555] underline-offset-4 transition-colors hover:text-[#70BFBF] hover:decoration-current active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+              >
+                Zenshuii
+              </a>
+            </p>
+            <span aria-hidden="true" className="text-[#555]">
+              |
+            </span>
             <a
-              href="https://zenshuii.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-sm transition-colors hover:text-[#70BFBF] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+              href="/privacy.html"
+              className="rounded-sm text-[#A5A5A5] transition-colors hover:text-[#70BFBF] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
             >
-              Zenshuii
+              Privacy
             </a>
-          </p>
+          </div>
           <div className="flex items-center gap-2">
             <a
               href="https://www.instagram.com/zenshuii/"
