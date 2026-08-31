@@ -382,7 +382,7 @@ export default function LandingPage() {
                 href="https://zenshuii.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-sm transition-colors hover:text-[#70BFBF] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+                className="rounded-sm underline decoration-[#555] underline-offset-4 transition-colors hover:text-[#70BFBF] hover:decoration-current active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
               >
                 Zenshuii
               </a>
