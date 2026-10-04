@@ -115,11 +115,6 @@ export default function LandingPage() {
   return (
     <main className="overflow-hidden bg-[#1C1C1C] text-[#F5F5F5]">
       <section className="hero-surface relative isolate border-b border-white/10">
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-[-20rem] hidden h-[44rem] w-[44rem] -translate-x-1/2 rounded-full bg-[#70BFBF]/10 blur-[110px] sm:block" />
-          <div className="absolute bottom-[-24rem] right-[-10rem] hidden h-[34rem] w-[34rem] rounded-full bg-[#2E8282]/15 blur-[100px] sm:block" />
-        </div>
-
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block"

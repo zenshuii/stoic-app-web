@@ -71,6 +71,41 @@ body {
   }
 }
 
+/* Match the original circles' Gaussian falloff without a filtered layer. */
+@media (min-width: 640px) {
+  .hero-surface {
+    background-image:
+      radial-gradient(
+        circle 42.625rem at 50% 2rem,
+        rgb(112 191 191 / 9.94%) 0%,
+        rgb(112 191 191 / 9.87%) 10%,
+        rgb(112 191 191 / 9.56%) 20%,
+        rgb(112 191 191 / 8.71%) 30%,
+        rgb(112 191 191 / 7.05%) 40%,
+        rgb(112 191 191 / 4.76%) 50%,
+        rgb(112 191 191 / 2.52%) 60%,
+        rgb(112 191 191 / 1.01%) 70%,
+        rgb(112 191 191 / 0.3%) 80%,
+        rgb(112 191 191 / 0.06%) 90%,
+        rgb(112 191 191 / 0%) 100%
+      ),
+      radial-gradient(
+        circle 35.75rem at calc(100% - 7rem) calc(100% + 7rem),
+        rgb(46 130 130 / 14.63%) 0%,
+        rgb(46 130 130 / 14.39%) 10%,
+        rgb(46 130 130 / 13.51%) 20%,
+        rgb(46 130 130 / 11.67%) 30%,
+        rgb(46 130 130 / 8.84%) 40%,
+        rgb(46 130 130 / 5.6%) 50%,
+        rgb(46 130 130 / 2.85%) 60%,
+        rgb(46 130 130 / 1.13%) 70%,
+        rgb(46 130 130 / 0.34%) 80%,
+        rgb(46 130 130 / 0.08%) 90%,
+        rgb(46 130 130 / 0%) 100%
+      );
+  }
+}
+
 @keyframes hero-enter {
   from {
     opacity: 0;
@@ -79,7 +114,7 @@ body {
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -162,7 +197,7 @@ body {
 
 .reveal-pending.reveal-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .hero-motion-pending [data-mobile-reveal].reveal-pending.reveal-visible {
