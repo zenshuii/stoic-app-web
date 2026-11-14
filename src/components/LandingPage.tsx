@@ -1,6 +1,6 @@
 import { FaInstagram, FaYoutube } from 'react-icons/fa'
 import { ArrowRight, BookOpen, Bookmark, Check, Sparkles } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState, useSyncExternalStore } from 'react'
 
 import { smoothScrollTo } from '../utils/smoothScrollTo'
 
@@ -30,8 +30,15 @@ const features = [
   },
 ]
 
+// Keep the prerendered form and initial hydration render consistent.
+const subscribeToClient = () => () => undefined
+
 export default function LandingPage() {
-  const [isHydrated, setIsHydrated] = useState(false)
+  const isHydrated = useSyncExternalStore(
+    subscribeToClient,
+    () => true,
+    () => false
+  )
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -43,10 +50,6 @@ export default function LandingPage() {
 
   const hasEmailError = !!inputError || !!error
   const hasEmailMessage = hasEmailError || (submitted && !error)
-
-  useEffect(() => {
-    setIsHydrated(true)
-  }, [])
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
