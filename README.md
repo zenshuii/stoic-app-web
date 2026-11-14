@@ -28,6 +28,14 @@ npm install
 npm run dev
 ```
 
+## Metadata and icons
+
+Sharing metadata lives in `index.html`. Images and icons are in `public/`;
+sharing thumbnails are 256 × 256.
+
+Use a new filename for updated sharing images, and bump icon URL versions in
+`index.html` and `public/privacy.html` when icons change.
+
 ## Deployment
 
 - This project is deployed via Vercel. Pushes to the main branch trigger production deployments.
