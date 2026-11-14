@@ -20,13 +20,18 @@ This site serves as the official landing page for the Stoic App:
 
 ## Getting Started
 
+Use Node.js 26 LTS. Run `nvm use` if you use nvm.
+
 ```bash
 # Install dependencies
-npm install
+npm ci
 
 # Run the development server
 npm run dev
 ```
+
+The scoped overrides in `package.json` patch Firestore’s Node.js transport and
+the TypeScript lint parser. Revisit them when upstream dependency ranges include the fixes.
 
 ## Metadata and icons
 
