@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="28 28 160 160">
-  <circle cx="108" cy="108" r="80" fill="#fff" />
+  <rect x="28" y="28" width="160" height="160" rx="25.6" fill="#fff" />
   <g transform="translate(108 108) scale(.84) translate(-108 -108)">
     <path
       fill="#333"
