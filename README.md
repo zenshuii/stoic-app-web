@@ -38,8 +38,8 @@ the TypeScript lint parser. Revisit them when upstream dependency ranges include
 Sharing metadata lives in `index.html`. Images and icons are in `public/`;
 sharing thumbnails are 256 × 256.
 
-Use a new filename for updated sharing images, and bump icon URL versions in
-`index.html` and `public/privacy.html` when icons change.
+Use a new filename for updated sharing images. When icons change, bump their
+URL versions in `index.html`, `public/privacy.html`, and `public/legal.html`.
 
 ## Deployment
 
