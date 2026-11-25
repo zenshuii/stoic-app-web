@@ -342,8 +342,8 @@ export default function LandingPage() {
             </button>
           </form>
           <p className="mx-auto mt-4 max-w-xl text-xs leading-5 text-[#A5A5A5]">
-            By joining the waitlist, you agree to receive Stoic launch updates.
-            {' '}
+            By joining the waitlist, you agree to receive Stoic launch updates
+            from Zenshuii Ltd. You can withdraw your consent at any time.{' '}
             <a
               href="/privacy.html"
               className="text-[#70BFBF] underline underline-offset-4 transition-colors hover:text-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
@@ -377,61 +377,70 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-6 py-8 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm text-[#777] sm:flex-row sm:text-left">
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:justify-start">
-            <p>
-              ©{' '}
-              <span className="inline-block w-[4ch] tabular-nums">
-                {isHydrated ? new Date().getFullYear() : null}
-              </span>{' '}
-              Stoic App by{' '}
+      <footer className="border-t border-white/10 px-6 pb-4 pt-5 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col items-center justify-between gap-3 pb-5 sm:flex-row">
+            <p className="text-sm text-[#A5A5A5]">
+              Stoic by{' '}
               <a
                 href="https://zenshuii.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm underline decoration-[#555] underline-offset-4 transition-colors hover:text-[#70BFBF] hover:decoration-current active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+                className="rounded-sm underline underline-offset-4 transition-colors hover:text-[#70BFBF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
               >
                 Zenshuii
               </a>
             </p>
-            <span aria-hidden="true" className="text-[#555]">
-              |
-            </span>
-            <a
-              href="/privacy.html"
-              className="rounded-sm text-[#A5A5A5] transition-colors hover:text-[#70BFBF] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
-            >
-              Privacy
-            </a>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.instagram.com/zenshuii/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+                aria-label="Zenshuii on Instagram"
+              >
+                <FaInstagram
+                  aria-hidden="true"
+                  focusable="false"
+                  className="h-5 w-5"
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/@zenshuiistudios"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+                aria-label="Zenshuii on YouTube"
+              >
+                <FaYoutube
+                  aria-hidden="true"
+                  focusable="false"
+                  className="h-5 w-5"
+                />
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <a
-              href="https://www.instagram.com/zenshuii/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
-              aria-label="Zenshuii on Instagram"
+          <div className="flex flex-col items-center justify-between gap-1 border-t border-white/10 pt-4 text-center text-sm leading-relaxed text-[#A5A5A5] sm:flex-row sm:gap-6 sm:text-left">
+            <p>
+              © {isHydrated ? new Date().getFullYear() : 2026} Zenshuii Ltd.
+              All rights reserved.
+            </p>
+            <nav
+              aria-label="Legal links"
+              className="flex shrink-0 items-center gap-2"
             >
-              <FaInstagram
-                aria-hidden="true"
-                focusable="false"
-                className="h-5 w-5"
-              />
-            </a>
-            <a
-              href="https://www.youtube.com/@zenshuiistudios"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
-              aria-label="Zenshuii on YouTube"
-            >
-              <FaYoutube
-                aria-hidden="true"
-                focusable="false"
-                className="h-5 w-5"
-              />
-            </a>
+              <a
+                href="/privacy.html"
+                className="inline-flex min-h-11 items-center rounded-sm px-2 transition-colors hover:text-[#70BFBF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
+              >
+                Privacy
+              </a>
+              <span aria-hidden="true">·</span>
+              <a
+                href="/legal.html"
+                className="inline-flex min-h-11 items-center rounded-sm px-2 transition-colors hover:text-[#70BFBF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
+              >
+                Legal
+              </a>
+            </nav>
           </div>
         </div>
       </footer>
