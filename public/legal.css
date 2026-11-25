@@ -279,6 +279,10 @@ h1 {
   color: var(--color-accent);
 }
 
+.footer-link[aria-current='page'] {
+  font-weight: 600;
+}
+
 a:focus-visible {
   border-radius: 2px;
   outline: 2px solid var(--color-accent);
