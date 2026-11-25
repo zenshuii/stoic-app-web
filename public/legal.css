@@ -260,6 +260,10 @@ h1 {
   text-decoration-color: currentColor;
 }
 
+.legal-separator {
+  opacity: 0.7;
+}
+
 .footer-link {
   display: inline-flex;
   align-items: center;

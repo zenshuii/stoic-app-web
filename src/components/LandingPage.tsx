@@ -431,7 +431,9 @@ export default function LandingPage() {
               >
                 Privacy
               </a>
-              <span aria-hidden="true">·</span>
+              <span aria-hidden="true" className="opacity-70">
+                |
+              </span>
               <a
                 href="/legal.html"
                 className="inline-flex min-h-11 items-center rounded-sm px-2 transition-colors hover:text-[#70BFBF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
