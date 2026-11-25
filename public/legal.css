@@ -245,6 +245,21 @@ h1 {
   flex-shrink: 0;
 }
 
+.company-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #555;
+  text-underline-offset: 0.25rem;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.company-link:hover {
+  color: var(--color-accent);
+  text-decoration-color: currentColor;
+}
+
 .footer-link {
   display: inline-flex;
   align-items: center;

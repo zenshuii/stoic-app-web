@@ -379,49 +379,47 @@ export default function LandingPage() {
 
       <footer className="border-t border-white/10 px-6 pb-4 pt-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-center justify-between gap-3 pb-5 sm:flex-row">
-            <p className="text-sm text-[#A5A5A5]">
-              Stoic by{' '}
-              <a
-                href="https://zenshuii.com"
-                className="rounded-sm underline underline-offset-4 transition-colors hover:text-[#70BFBF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
-              >
-                Zenshuii
-              </a>
-            </p>
-            <div className="flex items-center gap-2">
-              <a
-                href="https://www.instagram.com/zenshuii/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
-                aria-label="Zenshuii on Instagram"
-              >
-                <FaInstagram
-                  aria-hidden="true"
-                  focusable="false"
-                  className="h-5 w-5"
-                />
-              </a>
-              <a
-                href="https://www.youtube.com/@zenshuiistudios"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
-                aria-label="Zenshuii on YouTube"
-              >
-                <FaYoutube
-                  aria-hidden="true"
-                  focusable="false"
-                  className="h-5 w-5"
-                />
-              </a>
-            </div>
-          </div>
+          <nav
+            aria-label="Social links"
+            className="flex justify-center gap-2 pb-5 sm:justify-end"
+          >
+            <a
+              href="https://www.instagram.com/zenshuii/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+              aria-label="Zenshuii on Instagram"
+            >
+              <FaInstagram
+                aria-hidden="true"
+                focusable="false"
+                className="h-5 w-5"
+              />
+            </a>
+            <a
+              href="https://www.youtube.com/@zenshuiistudios"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+              aria-label="Zenshuii on YouTube"
+            >
+              <FaYoutube
+                aria-hidden="true"
+                focusable="false"
+                className="h-5 w-5"
+              />
+            </a>
+          </nav>
           <div className="flex flex-col items-center justify-between gap-1 border-t border-white/10 pt-4 text-center text-sm leading-relaxed text-[#A5A5A5] sm:flex-row sm:gap-6 sm:text-left">
             <p>
-              © {isHydrated ? new Date().getFullYear() : 2026} Zenshuii Ltd.
-              All rights reserved.
+              © {isHydrated ? new Date().getFullYear() : 2026}{' '}
+              <a
+                href="https://zenshuii.com"
+                className="rounded-sm underline decoration-[#555] underline-offset-4 transition-colors hover:text-[#70BFBF] hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
+              >
+                Zenshuii Ltd
+              </a>
+              . All rights reserved.
             </p>
             <nav
               aria-label="Legal links"
