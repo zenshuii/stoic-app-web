@@ -1,4 +1,4 @@
-import { FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa'
 import { ArrowRight, BookOpen, Bookmark, Check, Sparkles } from 'lucide-react'
 import { useRef, useState, useSyncExternalStore } from 'react'
 
@@ -404,6 +404,19 @@ export default function LandingPage() {
               aria-label="Zenshuii on YouTube"
             >
               <FaYoutube
+                aria-hidden="true"
+                focusable="false"
+                className="h-5 w-5"
+              />
+            </a>
+            <a
+              href="https://www.tiktok.com/@zenshuiistudios"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full transition-colors hover:bg-white/[0.08] hover:text-[#70BFBF] active:bg-white/[0.12] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+              aria-label="Zenshuii on TikTok"
+            >
+              <FaTiktok
                 aria-hidden="true"
                 focusable="false"
                 className="h-5 w-5"
