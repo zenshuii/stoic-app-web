@@ -342,8 +342,8 @@ export default function LandingPage() {
             </button>
           </form>
           <p className="mx-auto mt-4 max-w-xl text-xs leading-5 text-[#A5A5A5]">
-            By joining the waitlist, you agree to receive Stoic launch updates.
-            {' '}
+            By joining the waitlist, you agree to receive Stoic launch updates
+            from Zenshuii Ltd. You can withdraw your consent at any time.{' '}
             <a
               href="/privacy.html"
               className="text-[#70BFBF] underline underline-offset-4 transition-colors hover:text-[#8bcece] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#222222]"
@@ -377,35 +377,12 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-6 py-8 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm text-[#777] sm:flex-row sm:text-left">
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:justify-start">
-            <p>
-              ©{' '}
-              <span className="inline-block w-[4ch] tabular-nums">
-                {isHydrated ? new Date().getFullYear() : null}
-              </span>{' '}
-              Stoic App by{' '}
-              <a
-                href="https://zenshuii.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm underline decoration-[#555] underline-offset-4 transition-colors hover:text-[#70BFBF] hover:decoration-current active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
-              >
-                Zenshuii
-              </a>
-            </p>
-            <span aria-hidden="true" className="text-[#555]">
-              |
-            </span>
-            <a
-              href="/privacy.html"
-              className="rounded-sm text-[#A5A5A5] transition-colors hover:text-[#70BFBF] active:opacity-70 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
-            >
-              Privacy
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
+      <footer className="border-t border-white/10 px-6 pb-4 pt-5 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <nav
+            aria-label="Social links"
+            className="flex justify-center gap-2 pb-5 sm:justify-end"
+          >
             <a
               href="https://www.instagram.com/zenshuii/"
               target="_blank"
@@ -432,6 +409,38 @@ export default function LandingPage() {
                 className="h-5 w-5"
               />
             </a>
+          </nav>
+          <div className="flex flex-col items-center justify-between gap-1 border-t border-white/10 pt-4 text-center text-sm leading-relaxed text-[#A5A5A5] sm:flex-row sm:gap-6 sm:text-left">
+            <p>
+              © {isHydrated ? new Date().getFullYear() : 2026}{' '}
+              <a
+                href="https://zenshuii.com"
+                className="rounded-sm underline decoration-[#555] underline-offset-4 transition-colors hover:text-[#70BFBF] hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
+              >
+                Zenshuii Ltd
+              </a>
+              . All rights reserved.
+            </p>
+            <nav
+              aria-label="Legal links"
+              className="flex shrink-0 items-center gap-2"
+            >
+              <a
+                href="/privacy.html"
+                className="inline-flex min-h-11 items-center rounded-sm px-2 transition-colors hover:text-[#70BFBF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
+              >
+                Privacy
+              </a>
+              <span aria-hidden="true" className="opacity-70">
+                |
+              </span>
+              <a
+                href="/legal.html"
+                className="inline-flex min-h-11 items-center rounded-sm px-2 transition-colors hover:text-[#70BFBF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#70BFBF]"
+              >
+                Legal
+              </a>
+            </nav>
           </div>
         </div>
       </footer>
